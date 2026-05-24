@@ -9,6 +9,13 @@ sidebar:
 **Matplotlib** is the base charting library (everything is built via `fig, ax`). **Seaborn** is a layer on top: nicer by default and shorter for statistical charts. In practice: a quick chart — straight from pandas (`df.plot`), statistics — Seaborn, fine-tuning — matplotlib.
 :::
 
+:::note[Data flow]
+Input: a prepared DataFrame (after filters/grouping)
+→ Processing: a chart function (`plot`/`bar`/`hist`/Seaborn) draws from the columns
+→ Output: a static image (PNG for a report/notebook).
+Why: see a trend, outlier or distribution at a glance — faster than from a table.
+:::
+
 ## Why you need it
 
 A chart explains data faster than a table: a trend, an outlier, a distribution is seen at a glance. For exploratory analysis (EDA) and reports it's indispensable. For interactivity there's [Plotly](/en/04-python/12-plotly-basics/), but static charts are the working foundation.

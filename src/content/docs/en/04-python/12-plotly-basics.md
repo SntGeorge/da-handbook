@@ -9,6 +9,13 @@ sidebar:
 Plotly builds **interactive** charts: hover tooltips, zoom, filtering right in the browser. The quick path is **`plotly.express`** (`px`), one line per chart; fine control — `graph_objects`. The result saves to a self-contained HTML — handy for sharing without screenshots.
 :::
 
+:::note[Data flow]
+Input: a DataFrame
+→ Processing: `px.<type>(df, ...)` builds an interactive chart
+→ Output: an interactive chart in the notebook or a self-contained HTML file.
+Why: let people "play" with the data (hover, zoom) and share without screenshots.
+:::
+
 ## Why you need it
 
 A static chart ([matplotlib](/en/04-python/11-matplotlib-seaborn/)) is good for a report-as-image. But when you need to "play" with data — hover a point, zoom a period, hide a series — you need interactivity. Plotly gives it almost for free and embeds into dashboards (Streamlit, Dash).

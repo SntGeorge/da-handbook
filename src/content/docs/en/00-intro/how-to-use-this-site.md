@@ -31,13 +31,6 @@ Extra information, not critical for understanding.
 Something that will definitely break your data or analysis.
 :::
 
-## Tasks and exercises
+## Practice tasks
 
-Many pages end with tasks. The answers are hidden in expandable blocks — try solving them yourself first.
-
-<details>
-<summary>Example of an expandable answer</summary>
-
-The solution will be here.
-
-</details>
+Many pages end with expandable blocks of worked tasks — try answering yourself first, then reveal the solution.
