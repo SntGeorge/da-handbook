@@ -18,7 +18,40 @@ Why: analytics over billions of rows in seconds where a regular DB would stall.
 
 ## Why you need it
 
-In the CIS ClickHouse is almost a standard for product analytics (used by Yandex and many companies around it). If you're job-hunting here, there's a good chance you'll work with it rather than Snowflake/BigQuery ([stack overview](/en/00-intro/market-stack-2026/)). It's incredibly fast on aggregates thanks to columnar storage, compression and vectorized execution — the typical scenario is event analytics: billions of rows of logs/clicks needing fast `GROUP BY`.
+In the CIS ClickHouse is almost a standard for product analytics (used by Yandex and many companies around it). If you're job-hunting here, there's a good chance you'll work with it rather than Snowflake/BigQuery ([stack overview](/en/00-intro/market-stack-2026/)). The typical scenario is event analytics: billions of rows of logs/clicks needing fast `GROUP BY`.
+
+## Columnar storage at a glance
+
+"Columnar" is the key word. Take the same table:
+
+| order_id | country | amount |
+|----------|---------|--------|
+| 1 | RU | 2500 |
+| 2 | KZ | 4200 |
+| 3 | RU | 1800 |
+
+The difference is **how it physically sits on disk**:
+
+| Layout | How it sits on disk | What `SUM(amount)` reads |
+|--------|---------------------|--------------------------|
+| Row-based (PostgreSQL) | `(1,RU,2500)` `(2,KZ,4200)` `(3,RU,1800)` — whole rows | **all** columns of all rows |
+| Columnar (ClickHouse) | `[1,2,3]` · `[RU,KZ,RU]` · `[2500,4200,1800]` — each column separately | **only** the `amount` column |
+
+So an aggregate over a billion rows in ClickHouse is reading **one column**, not the whole table. Plus same-type column values compress well. Hence the speed.
+
+## How it all works together
+
+The whole path of data from source to dashboard in one diagram:
+
+```mermaid
+flowchart LR
+    S["Sources<br/>events, logs,<br/>Kafka, files"] -->|batch insert| T["MergeTree table<br/>sorted by key<br/>+ monthly partitions"]
+    T --> MV["Materialized view<br/>pre-aggregates<br/>(revenue/day)"]
+    MV --> BI["Dashboard / BI<br/>answer in a fraction of a second"]
+    T --> Q["Ad-hoc SQL<br/>GROUP BY"]
+```
+
+Below — step by step through this diagram: how to install, how to load data, how to organize the table and how to work with it.
 
 ## How to set it up and connect
 
