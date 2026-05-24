@@ -105,7 +105,7 @@ export default defineConfig({
           label: 'Введение',
           translations: { en: 'Introduction' },
           autogenerate: { directory: '00-intro' },
-          collapsed: false,
+          collapsed: true,
         },
         {
           label: 'Установка и окружение',
@@ -116,7 +116,7 @@ export default defineConfig({
         {
           label: 'SQL',
           autogenerate: { directory: '02-sql' },
-          collapsed: false,
+          collapsed: true,
           badge: { text: 'Старт', variant: 'tip' },
         },
         {

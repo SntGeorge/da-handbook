@@ -337,3 +337,20 @@ pre.mermaid {
     font-size: 0.8125rem;
   }
 }
+
+/* === ШАПКА: переключатель языка/темы на splash-страницах в мобиле ===
+   Starlight прячет правую группу (язык, тема, соцсети) на мобиле классом
+   sl-hidden, а на обычных страницах дублирует её в бургер-меню. Но у splash-
+   страниц (главная) бургер-меню нет, поэтому на мобиле язык/тему не достать.
+   Splash-страницы помечены атрибутом html[data-has-hero] — показываем группу
+   только на них. Соцсети скрываем, чтобы не теснить шапку: GitHub есть в футере. */
+@media (max-width: 50rem) {
+  html[data-has-hero] .right-group {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  html[data-has-hero] .right-group .social-icons {
+    display: none;
+  }
+}

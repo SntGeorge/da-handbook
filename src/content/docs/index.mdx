@@ -5,23 +5,21 @@ template: splash
 head:
   - tag: title
     content: Data Analyst Handbook — справочник для аналитика данных
+  # Авто-выбор языка: при первом заходе посетителю с не-русским браузером
+  # один раз открываем английскую версию. Выбор запоминается, русский остаётся
+  # доступен (повторно не перебрасывает). Скрипт работает только на этой странице.
+  - tag: script
+    content: |
+      (function(){try{var k='da-lang-choice';if(!localStorage.getItem(k)&&!/^ru/i.test(navigator.language||'')){localStorage.setItem(k,'en');location.replace('/en/');}}catch(e){}})();
 hero:
   tagline: От первой строчки <code>SELECT</code> до требований рекрутеров на middle-позиции. Один справочник, никаких 47 вкладок в браузере.
   image:
     file: ../../assets/logo.svg
   actions:
-    - text: Начать с SQL
-      link: /02-sql/
-      icon: right-arrow
-      variant: primary
     - text: Карта обучения
       link: /00-intro/learning-roadmap/
       icon: open-book
-      variant: secondary
-    - text: GitHub
-      link: https://github.com/SntGeorge/da-handbook
-      icon: external
-      variant: minimal
+      variant: primary
 ---
 
 import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
