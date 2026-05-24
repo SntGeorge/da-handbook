@@ -46,7 +46,7 @@ export default defineConfig({
       },
       favicon: '/favicon.svg',
       social: {
-        github: 'https://github.com/your-username/data-analyst-handbook',
+        github: 'https://github.com/SntGeorge/da-handbook',
       },
       head: [
         // Open Graph
