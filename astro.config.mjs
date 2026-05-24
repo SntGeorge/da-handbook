@@ -79,11 +79,13 @@ export default defineConfig({
         // },
       ],
       customCss: [
+        // KaTeX — таблица стилей для формул (позиционирование индексов, шрифты).
+        // Без неё нижние/верхние индексы «съезжают». Должна идти ДО наших
+        // кастомных стилей, чтобы при необходимости их можно было переопределить.
+        'katex/dist/katex.min.css',
         // Кастомные стили
         './src/styles/custom.css',
         './src/styles/fonts.css',
-        // KaTeX подключим, когда появятся страницы с формулами:
-        // 'katex/dist/katex.min.css',
       ],
       expressiveCode: {
         themes: ['github-dark', 'github-light'],
