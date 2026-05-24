@@ -8,8 +8,8 @@ import remarkMath from 'remark-math';
 
 // https://astro.build/config
 export default defineConfig({
-  // ВАЖНО: замени на финальный URL после деплоя на Cloudflare Pages
-  site: 'https://da-handbook.pages.dev',
+  // Финальный URL сайта (Cloudflare Workers Static Assets).
+  site: 'https://da-handbook.trosman1999.workers.dev',
 
   markdown: {
     remarkPlugins: [remarkMath],
