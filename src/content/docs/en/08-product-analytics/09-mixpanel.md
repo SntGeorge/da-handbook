@@ -9,13 +9,20 @@ sidebar:
 Mixpanel is a direct competitor of [Amplitude](/en/08-product-analytics/08-amplitude/): the same event-based analytics, the same funnels/retention/segmentation. The main reports are **Insights**, **Funnels**, **Retention**, **Flows**. Conceptually the tools are very similar; the choice is usually up to the company, and for an analyst it's important to understand the general approach, not to memorize buttons.
 :::
 
+:::note[Data flow]
+Input: the product sends events via SDK/HTTP API (as in [Amplitude](/en/08-product-analytics/08-amplitude/))
+→ Processing: Mixpanel stitches events to user profiles, computes reports in the UI
+→ Output: Insights, Funnels, Retention, Flows.
+Why: the same product metrics without SQL; the model is identical to Amplitude.
+:::
+
 ## Why you need it
 
 If you know Amplitude — you'll learn Mixpanel in a day, and vice versa: the "events + properties + reports" model is the same. Knowing either one covers the "product-analytics experience" requirement in a posting.
 
-## Architecture
+## Architecture and how data gets in
 
-The same model as Amplitude and in [event tracking](/en/08-product-analytics/07-event-tracking/): the product sends **events** with **properties**, there are **user profiles** (user attributes). The analyst builds reports on top of this data in the UI.
+The same model as Amplitude and in [event tracking](/en/08-product-analytics/07-event-tracking/): the product sends **events** with **properties** via an SDK or HTTP API, there are **user profiles** (user attributes), and identity is stitched by `distinct_id`. The analyst doesn't write the SDK — they design the events and build reports on top of them in the UI. The loading method and data structure are covered in detail on the [Amplitude](/en/08-product-analytics/08-amplitude/) page — Mixpanel works the same way.
 
 ## The main reports
 
