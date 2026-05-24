@@ -122,6 +122,57 @@ flowchart LR
 A condition on a "raw" column (`status = 'paid'`) → `WHERE` (faster, filters earlier). A condition on an aggregate (`COUNT(*) > 1`, `SUM(amount) > 10000`) → `HAVING`.
 :::
 
+## Advanced aggregates
+
+Three tricks that often save time in reports.
+
+**`FILTER (WHERE ...)`** — compute an aggregate over only some rows, without piling up `CASE` (PostgreSQL):
+
+```sql
+SELECT
+    COUNT(*) FILTER (WHERE status = 'paid')      AS paid,
+    COUNT(*) FILTER (WHERE status = 'cancelled') AS cancelled,
+    SUM(amount) FILTER (WHERE status = 'paid')   AS paid_revenue
+FROM orders;
+```
+
+| paid | cancelled | paid_revenue |
+|------|-----------|--------------|
+| 5    | 1         | 12200        |
+
+**`STRING_AGG`** (in MySQL — `GROUP_CONCAT`) — glue a group's values into one string:
+
+```sql
+SELECT country, STRING_AGG(order_id::text, ', ' ORDER BY order_id) AS order_ids
+FROM orders
+GROUP BY country;
+```
+
+| country | order_ids       |
+|---------|-----------------|
+| RU      | 101, 102, 103   |
+| KZ      | 104, 105        |
+| DE      | 106             |
+
+**`ROLLUP`** — add a subtotal/grand-total row to the grouping. The total row has `NULL` in the grouped column:
+
+```sql
+SELECT country, SUM(amount) AS revenue
+FROM orders
+GROUP BY ROLLUP(country);
+```
+
+| country | revenue |
+|---------|---------|
+| RU      | 5290    |
+| KZ      | 4900    |
+| DE      | 3000    |
+| NULL    | 13190   |
+
+:::note[The GROUPING SETS family]
+`ROLLUP(a, b)` gives hierarchical subtotals (by `a,b`, by `a`, grand total). `CUBE(a, b)` — totals over **all** combinations. `GROUPING SETS (...)` — specify the slices you want manually. Handy for pivot reports "by country, by status and overall" in a single query.
+:::
+
 ## Practice tasks
 
 <details>

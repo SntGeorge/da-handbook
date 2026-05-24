@@ -95,6 +95,16 @@ FROM orders;
 | 105      | 700    | 4200        | -3500 |
 | 106      | 3000   | 700         | 2300  |
 
+### Other useful functions
+
+- `FIRST_VALUE(x)` / `LAST_VALUE(x)` — the first/last value in the window (e.g. a customer's first order, shown in each of their rows).
+- `NTH_VALUE(x, n)` — the n-th value.
+- `NTILE(k)` — split the window's rows into `k` equal groups (used for percentiles and [RFM segmentation](/en/02-sql/16-common-patterns/)).
+
+:::caution[LAST_VALUE and the frame]
+`LAST_VALUE` with `ORDER BY` defaults to the "up to the current row" frame, so it often returns not what you expect (the current row, not the end of the window). To get the true last value, set the frame explicitly: `ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING`.
+:::
+
 ## Aggregates as window + frame
 
 `SUM/AVG/COUNT ... OVER (ORDER BY ...)` with an order turn into a **running total**. By default the frame is "from the start of the window to the current row".

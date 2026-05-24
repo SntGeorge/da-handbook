@@ -122,6 +122,57 @@ flowchart LR
 Условие на «сырой» столбец (`status = 'paid'`) → в `WHERE` (быстрее, отсекает раньше). Условие на агрегат (`COUNT(*) > 1`, `SUM(amount) > 10000`) → в `HAVING`.
 :::
 
+## Продвинутые агрегаты
+
+Три приёма, которые часто экономят время в отчётах.
+
+**`FILTER (WHERE ...)`** — посчитать агрегат только по части строк, не плодя `CASE` (PostgreSQL):
+
+```sql
+SELECT
+    COUNT(*) FILTER (WHERE status = 'paid')      AS paid,
+    COUNT(*) FILTER (WHERE status = 'cancelled') AS cancelled,
+    SUM(amount) FILTER (WHERE status = 'paid')   AS paid_revenue
+FROM orders;
+```
+
+| paid | cancelled | paid_revenue |
+|------|-----------|--------------|
+| 5    | 1         | 12200        |
+
+**`STRING_AGG`** (в MySQL — `GROUP_CONCAT`) — склеить значения группы в одну строку:
+
+```sql
+SELECT country, STRING_AGG(order_id::text, ', ' ORDER BY order_id) AS order_ids
+FROM orders
+GROUP BY country;
+```
+
+| country | order_ids       |
+|---------|-----------------|
+| RU      | 101, 102, 103   |
+| KZ      | 104, 105        |
+| DE      | 106             |
+
+**`ROLLUP`** — добавить к группировке строку-итог (subtotal/grand total). Строка итога имеет `NULL` в сгруппированном столбце:
+
+```sql
+SELECT country, SUM(amount) AS revenue
+FROM orders
+GROUP BY ROLLUP(country);
+```
+
+| country | revenue |
+|---------|---------|
+| RU      | 5290    |
+| KZ      | 4900    |
+| DE      | 3000    |
+| NULL    | 13190   |
+
+:::note[Семейство GROUPING SETS]
+`ROLLUP(a, b)` даёт иерархические подытоги (по `a,b`, по `a`, общий). `CUBE(a, b)` — итоги по **всем** комбинациям. `GROUPING SETS (...)` — задать нужные срезы вручную. Удобно для сводных отчётов «по странам, по статусам и в целом» одним запросом.
+:::
+
 ## Задачи для самопроверки
 
 <details>
