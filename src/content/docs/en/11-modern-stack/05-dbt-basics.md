@@ -24,6 +24,32 @@ Transformations used to live in scattered SQL scripts and views without versions
 
 dbt (data build tool) handles the **T** in **ELT**: data is first loaded raw into the [DWH](/en/11-modern-stack/01-cloud-dwh-overview/) (E and L), and then dbt transforms it **inside** the warehouse with SQL queries. No separate processing servers — the DWH itself does all the computing.
 
+## How to install and connect to the DWH
+
+dbt Core is a Python package; you install it for a specific warehouse (an adapter):
+
+```bash
+pip install dbt-postgres        # or dbt-snowflake, dbt-bigquery, dbt-clickhouse
+dbt init my_project             # creates the project skeleton
+```
+
+Where to connect is in `profiles.yml` (host, database, schema, credentials):
+
+```yaml
+my_project:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      schema: analytics
+      user: "{{ env_var('DB_USER') }}"   # credentials from env vars, not the file
+```
+
+:::caution[Credentials in env vars, not in git]
+Don't commit `profiles.yml` with a password. Pull secrets via `env_var(...)` from environment variables — otherwise warehouse access leaks into the repository.
+:::
+
 ## Models, sources, seeds
 
 - **Model** — a `.sql` file with a `SELECT`. dbt wraps it in `CREATE TABLE/VIEW` itself. Models reference each other via `ref()`, and dbt builds the dependency graph.

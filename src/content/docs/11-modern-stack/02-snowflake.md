@@ -24,11 +24,31 @@ Snowflake — одно из самых распространённых обла
 
 В классической БД хранение и вычисления связаны. Snowflake их разделяет на три слоя:
 
+```mermaid
+flowchart TD
+    SRC["Источники<br/>файлы, БД, стримы"] -->|COPY / Snowpipe| ST["Storage<br/>данные в облаке<br/>(платишь за объём)"]
+    ST --> WH1["Warehouse аналитики<br/>(compute)"]
+    ST --> WH2["Warehouse загрузки<br/>(compute)"]
+    WH1 --> BI["BI / SQL<br/>отчёты"]
+    style ST fill:#1e3a5f,color:#fff
+```
+
 - **Storage** — данные в облаке, платишь за объём.
-- **Compute** — virtual warehouses, которые выполняют запросы; платишь за время их работы.
+- **Compute** — virtual warehouses, которые выполняют запросы; платишь за время их работы. Их может быть несколько над одними данными — команды не мешают друг другу.
 - **Cloud services** — оптимизатор, метаданные, безопасность.
 
 Следствие: можно остановить вычисления (warehouse «спит» — не платишь), а данные останутся; и наоборот — нарастить мощность под тяжёлый запрос, не трогая хранилище.
+
+## Как подключиться и загрузить данные
+
+- **Подключение:** веб-интерфейс **Snowsight**, CLI **SnowSQL**, либо драйверы (Python `snowflake-connector`, ODBC/JDBC) — через них же цепляются BI и [dbt](/11-modern-stack/05-dbt-basics/).
+- **Загрузка:** файл кладут в *stage* (внутренний или S3/GCS), затем `COPY INTO` грузит его в таблицу; для потока — **Snowpipe** (автозагрузка по мере появления файлов):
+
+```sql
+COPY INTO orders
+FROM @my_stage/orders.csv
+FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1);
+```
 
 ## Virtual warehouses
 

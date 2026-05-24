@@ -24,6 +24,24 @@ BigQuery is popular at product companies and natively tied to Google's ecosystem
 
 Fully **serverless**: no clusters to manage (unlike Snowflake's warehouses). Google allocates resources for the query itself. You just load data and write SQL — the infrastructure is invisible.
 
+```mermaid
+flowchart LR
+    SRC["Sources<br/>GA4, files in GCS,<br/>streaming"] -->|load / stream| BQ["BigQuery<br/>tables with partitions<br/>and clustering"]
+    BQ -->|SQL, partition scan| OUT["Dashboards (Looker Studio),<br/>exports, ML"]
+    style BQ fill:#1e3a5f,color:#fff
+```
+
+## How to connect and load data
+
+- **Connecting:** the BigQuery web console, the `bq` CLI, client libraries (Python `google-cloud-bigquery`), and natively — [Looker Studio](/en/07-bi-tools/looker/01-intro/).
+- **Loading:** a one-off file import, continuous streaming, or **external tables** right over files in GCS:
+
+```bash
+bq load --source_format=CSV dataset.orders gs://bucket/orders.csv
+```
+
+GA4 can stream events into BigQuery natively — hence its popularity in product analytics.
+
 ## Standard vs Legacy SQL
 
 There used to be a proprietary "Legacy SQL"; now the standard is **Standard SQL** (ANSI-compliant, like in regular DBs). Always use Standard SQL; Legacy appears only in very old projects.

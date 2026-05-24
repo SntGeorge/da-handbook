@@ -24,6 +24,24 @@ BigQuery популярен в продуктовых компаниях и на
 
 Полностью **serverless**: нет кластеров, которыми надо управлять (в отличие от warehouse'ов Snowflake). Google сам выделяет ресурсы под запрос. Ты просто загружаешь данные и пишешь SQL — инфраструктура невидима.
 
+```mermaid
+flowchart LR
+    SRC["Источники<br/>GA4, файлы в GCS,<br/>стриминг"] -->|load / stream| BQ["BigQuery<br/>таблицы с партициями<br/>и кластеризацией"]
+    BQ -->|SQL, скан партиций| OUT["Дашборды (Looker Studio),<br/>выгрузки, ML"]
+    style BQ fill:#1e3a5f,color:#fff
+```
+
+## Как подключиться и загрузить данные
+
+- **Подключение:** веб-консоль BigQuery, CLI `bq`, клиентские библиотеки (Python `google-cloud-bigquery`), нативно — [Looker Studio](/07-bi-tools/looker/01-intro/).
+- **Загрузка:** разовый импорт файла, постоянный стриминг или **внешние таблицы** прямо поверх файлов в GCS:
+
+```bash
+bq load --source_format=CSV dataset.orders gs://bucket/orders.csv
+```
+
+GA4 умеет лить события в BigQuery нативно — отсюда его популярность в продуктовой аналитике.
+
 ## Standard vs Legacy SQL
 
 Раньше был свой «Legacy SQL», сейчас стандарт — **Standard SQL** (соответствует ANSI, как в обычных БД). Всегда используй Standard SQL; Legacy встречается только в очень старых проектах.

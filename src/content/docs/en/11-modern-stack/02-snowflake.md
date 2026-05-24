@@ -24,11 +24,31 @@ Snowflake is one of the most widespread cloud DWHs, especially in the US and Eur
 
 In a classic DB storage and compute are coupled. Snowflake splits them into three layers:
 
+```mermaid
+flowchart TD
+    SRC["Sources<br/>files, DBs, streams"] -->|COPY / Snowpipe| ST["Storage<br/>data in the cloud<br/>(pay for volume)"]
+    ST --> WH1["Analytics warehouse<br/>(compute)"]
+    ST --> WH2["Loading warehouse<br/>(compute)"]
+    WH1 --> BI["BI / SQL<br/>reports"]
+    style ST fill:#1e3a5f,color:#fff
+```
+
 - **Storage** — data in the cloud, you pay for volume.
-- **Compute** — virtual warehouses that run queries; you pay for their running time.
+- **Compute** — virtual warehouses that run queries; you pay for their running time. There can be several over the same data — teams don't interfere.
 - **Cloud services** — the optimizer, metadata, security.
 
 Consequence: you can stop compute (a warehouse "sleeps" — you don't pay) while the data stays; and conversely — scale up power for a heavy query without touching storage.
+
+## How to connect and load data
+
+- **Connecting:** the **Snowsight** web UI, the **SnowSQL** CLI, or drivers (Python `snowflake-connector`, ODBC/JDBC) — BI and [dbt](/en/11-modern-stack/05-dbt-basics/) connect through these too.
+- **Loading:** a file goes into a *stage* (internal or S3/GCS), then `COPY INTO` loads it into a table; for a stream — **Snowpipe** (auto-load as files arrive):
+
+```sql
+COPY INTO orders
+FROM @my_stage/orders.csv
+FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1);
+```
 
 ## Virtual warehouses
 

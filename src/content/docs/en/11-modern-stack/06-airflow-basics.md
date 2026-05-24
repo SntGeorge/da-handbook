@@ -24,6 +24,15 @@ A report must update itself: at night fetch data → transform ([dbt](/en/11-mod
 
 A tool for **orchestrating** (managing the order and schedule of) data-processing tasks. It doesn't process data itself — it's the **conductor**: it says what to run and when, and in what sequence.
 
+## Where it lives and how it's installed
+
+Airflow is a server with a web UI (a scheduler + a UI with run history and logs). Where it comes from:
+
+- **Self-host** — run it yourself (Docker Compose with Airflow's ready `docker-compose.yaml`); for testing — `pip install apache-airflow`.
+- **Managed** — no server to administer: **MWAA** (AWS), **Cloud Composer** (Google), **Astronomer**.
+
+DAGs are placed as Python files in a `dags/` folder — Airflow picks them up automatically. Connections to sources (DBs, DWH, APIs) are stored in **Connections** in the UI, not in code.
+
 ## DAG and tasks
 
 A **DAG** (Directed Acyclic Graph) is a graph of tasks without cycles: tasks and dependency arrows of "what comes after what".
