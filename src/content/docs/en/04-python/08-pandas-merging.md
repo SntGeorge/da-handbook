@@ -9,6 +9,22 @@ sidebar:
 **`merge`** is SQL's `JOIN`: glue two tables by key (`inner`/`left`/`right`/`outer`). **`concat`** stacks tables (by rows, like `UNION`) or appends columns. The main trap is row inflation when the key has duplicates.
 :::
 
+:::note[Data flow]
+Input: two tables with a common key (orders + a customer reference)
+→ Processing: `merge` matches rows by the key (`on=`), the `how` type decides the fate of non-matches
+→ Output: one table where each order has the customer's fields pulled in.
+Why: gather scattered data into a single mart for analysis.
+:::
+
+`merge` matches rows by the `customer_id` key:
+
+```mermaid
+flowchart LR
+    L["orders<br/>order_id, customer_id, amount"] -->|on=customer_id| M["merge"]
+    R["customers<br/>customer_id, name"] -->|on=customer_id| M
+    M --> O["Result<br/>order_id, customer_id, amount, name"]
+```
+
 ## Why you need it
 
 Data is almost always split across tables: orders separate, customers separate. To pull a customer's name onto an order, or a product reference onto sales, you need `merge`.

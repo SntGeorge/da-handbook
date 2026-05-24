@@ -9,6 +9,22 @@ sidebar:
 **`groupby`** is SQL's `GROUP BY`: split the data into groups and compute an aggregate per group. `agg` computes several functions at once, `transform` returns a result of the same length (for shares and normalization), `pivot_table` builds a pivot table.
 :::
 
+:::note[Data flow]
+Input: a DataFrame of event rows (orders)
+→ Processing: **split** (break by key) → **apply** (compute an aggregate) → **combine** (assemble back)
+→ Output: a "metric by group" table (revenue by country).
+Why: collapse thousands of rows into meaningful numbers per slice.
+:::
+
+The mechanics of `groupby` are "split-apply-combine":
+
+```mermaid
+flowchart LR
+    D["DataFrame<br/>RU,RU,KZ,KZ,DE"] -->|split by country| G["RU: 2 rows<br/>KZ: 2 rows<br/>DE: 1 row"]
+    G -->|apply: sum amount| A["RU→4300<br/>KZ→4900<br/>DE→3000"]
+    A -->|combine| R["Final table<br/>revenue by country"]
+```
+
 ## Why you need it
 
 "Revenue by country", "average check by status", "number of orders per customer" — all of these are groupings. `groupby` is one of the most frequent tools in an analyst's work.

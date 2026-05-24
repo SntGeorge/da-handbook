@@ -9,6 +9,23 @@ sidebar:
 For SQL practice you need two things: a **DB server** (PostgreSQL — the standard for analysts) and a **GUI client** (DBeaver Community — free, all OSes). Install both, create a connection, load demo data — and you can write queries.
 :::
 
+:::note[Data flow]
+Input: a demo database (dvdrental / orders) loaded into PostgreSQL
+→ Processing: you write SQL in DBeaver, the server runs the query
+→ Output: a result table in the DBeaver window.
+Why: a local sandbox to safely practice SQL on real tables.
+:::
+
+How the two programs relate: the server stores and computes, the client is your window into it.
+
+```mermaid
+flowchart LR
+    DB["PostgreSQL server<br/>stores data, port 5432"] <-->|connection| GUI["DBeaver<br/>GUI client"]
+    GUI -->|SQL query| DB
+    DB -->|result| GUI
+    GUI --> YOU["You: write a query<br/>and see the table"]
+```
+
 ## PostgreSQL
 
 **macOS** (Homebrew):
