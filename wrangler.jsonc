@@ -1,0 +1,15 @@
+{
+  // Конфиг для деплоя на Cloudflare Workers (Static Assets).
+  // Сайт полностью статический, поэтому серверного воркера (main) нет —
+  // Cloudflare просто раздаёт содержимое dist/ как статику.
+  // Наличие этого файла не даёт `wrangler deploy` запускать авто-настройку
+  // через `astro add cloudflare` (которая тянет SSR-адаптер и workerd).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "da-handbook",
+  "compatibility_date": "2026-05-24",
+  "assets": {
+    "directory": "./dist",
+    // На несуществующих путях отдаём собранную страницу 404.
+    "not_found_handling": "404-page"
+  }
+}
