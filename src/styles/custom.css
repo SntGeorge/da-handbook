@@ -370,3 +370,72 @@ html[data-has-hero] .site-title span {
   white-space: nowrap;
   border: 0;
 }
+
+/* ============================================================
+   ГЛАВНАЯ: анимация и контраст логотипа в hero
+   - тёмная тема: оранжевое свечение отделяет тёмный логотип от фона;
+   - светлая тема: мягкая тень для глубины;
+   - появление + лёгкое «парение» + пульс свечения;
+   - всё под prefers-reduced-motion (для тех, кто отключил анимации,
+     остаётся статичное свечение/тень — контраст сохраняется).
+   ============================================================ */
+
+/* Базовый контраст-глоу (работает всегда, в т.ч. при reduced-motion) */
+:root[data-theme='dark'] .hero img {
+  filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.3))
+    drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55));
+}
+:root[data-theme='light'] .hero img {
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.16));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Логотип: плавно проявляется, парит и мягко «дышит» свечением */
+  :root[data-theme='dark'] .hero img {
+    animation:
+      hero-fade 0.8s ease-out both,
+      hero-float 6s ease-in-out infinite,
+      hero-glow-dark 4.5s ease-in-out 0.8s infinite;
+  }
+  :root[data-theme='light'] .hero img {
+    animation:
+      hero-fade 0.8s ease-out both,
+      hero-float 6s ease-in-out infinite,
+      hero-glow-light 4.5s ease-in-out 0.8s infinite;
+  }
+  /* Заголовок и кнопка мягко въезжают снизу */
+  .hero .stack {
+    animation: hero-rise 0.7s ease-out 0.15s both;
+  }
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes hero-glow-dark {
+  0%, 100% {
+    filter: drop-shadow(0 0 18px rgba(249, 115, 22, 0.25))
+      drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55));
+  }
+  50% {
+    filter: drop-shadow(0 0 36px rgba(249, 115, 22, 0.55))
+      drop-shadow(0 10px 26px rgba(0, 0, 0, 0.55));
+  }
+}
+@keyframes hero-glow-light {
+  0%, 100% {
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.14));
+  }
+  50% {
+    filter: drop-shadow(0 10px 28px rgba(249, 115, 22, 0.3));
+  }
+}
