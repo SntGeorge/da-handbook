@@ -108,3 +108,21 @@ const props = Astro.props as Props;
     if (mutations.some((m) => m.attributeName === 'data-theme')) scheduleRender();
   }).observe(document.documentElement, { attributes: true });
 </script>
+
+<script>
+  // GitHub-ссылки (иконка в шапке от Starlight) открываем в новой вкладке.
+  function externalizeGithub() {
+    document
+      .querySelectorAll<HTMLAnchorElement>('a[href*="github.com"]:not([target])')
+      .forEach((a) => {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', externalizeGithub, { once: true });
+  } else {
+    externalizeGithub();
+  }
+  document.addEventListener('astro:page-load', externalizeGithub);
+</script>
