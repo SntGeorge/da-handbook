@@ -17,6 +17,13 @@ CASE WHEN amount >= 3000 THEN 'big'
 Plus short helpers: `COALESCE` (first non-`NULL`), `NULLIF` (turn a value into `NULL`), `GREATEST`/`LEAST` (max/min of the arguments).
 :::
 
+:::note[Data flow]
+Input: table rows
+→ Processing: `CASE WHEN ...` assigns a value by condition; `COALESCE`/`NULLIF` handle `NULL`
+→ Output: a new derived column (category, flag, placeholder instead of NULL).
+Why: build "if-then" logic right in the query — segments, buckets, NULL protection.
+:::
+
 ## Why you need it
 
 `CASE` builds categories and labels: amount segments, flags, buckets. And `COALESCE` heals `NULL` (substitutes 0 or "not set"). Both appear in almost every analytical query.

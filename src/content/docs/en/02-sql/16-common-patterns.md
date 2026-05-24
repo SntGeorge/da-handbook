@@ -14,6 +14,13 @@ Here are ready-made "recipes" an analyst writes constantly. All build on what we
 - **Gaps-and-islands** — grouping consecutive events (sessions, streaks).
 :::
 
+:::note[Data flow]
+Input: raw tables (orders, events)
+→ Processing: combos of window functions, CTEs and aggregates assemble the metric (retention, cohorts, RFM)
+→ Output: a ready analytical mart/report.
+Why: typical product computations in one query — what's often asked in interviews.
+:::
+
 ## Why you need it
 
 This isn't new syntax but an **assembly** of what you've learned into typical business tasks. These exact patterns are asked in interviews and written at work every week.

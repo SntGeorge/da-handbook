@@ -16,6 +16,13 @@ A subquery is a `SELECT` inside another query. Kinds:
 A common analyst trick: first collapse data with a subquery, then join — to kill duplicates.
 :::
 
+:::note[Data flow]
+Input: table(s)
+→ Processing: an inner query computes an intermediate result → the outer query uses it (in `WHERE`/`FROM`/`SELECT`, including correlated)
+→ Output: the final table.
+Why: build the answer in two steps when a single flat query can't express it.
+:::
+
 ## Why you need it
 
 Subqueries answer "two-step" questions: first compute something intermediate, then use it. "Orders above average", "customers without orders", "an order's share of total revenue" — all subqueries.

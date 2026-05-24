@@ -16,6 +16,13 @@ Set operations **stack the results of two queries vertically** (rows under rows)
 Requirement: the queries have the same number of columns and compatible types.
 :::
 
+:::note[Data flow]
+Input: two `SELECT` results with the same columns
+→ Processing: `UNION` (combine, drop duplicates), `UNION ALL` (keep all), `INTERSECT` (common), `EXCEPT` (difference)
+→ Output: one combined set of rows.
+Why: stack exports/periods into one table or compare two sets.
+:::
+
 ## Why you need it
 
 When data sits in different tables of the same structure (archive and current orders, two lead sources) — you stitch them with `UNION`. And `INTERSECT`/`EXCEPT` answer "who's in both" and "who's here but not there" without joins.

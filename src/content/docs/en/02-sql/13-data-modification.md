@@ -14,6 +14,13 @@ Three data-modification commands (DML): `INSERT` (add), `UPDATE` (change), `DELE
 - Wrap risky changes in a **transaction** (`BEGIN ... COMMIT/ROLLBACK`).
 :::
 
+:::note[Data flow]
+Input: a table + new/changed values
+→ Processing: `INSERT` adds rows, `UPDATE` changes by `WHERE`, `DELETE` removes by `WHERE`
+→ Output: the table's changed state.
+Why: not just read but change data — populate tables, fix, clean up.
+:::
+
 ## Why you need it
 
 An analyst mostly reads data, but sometimes needs to change it too: prepare a data mart, fix dirty values, populate a test table. Here the cost of a mistake is higher — an `UPDATE` without `WHERE` silently overwrites the whole table.

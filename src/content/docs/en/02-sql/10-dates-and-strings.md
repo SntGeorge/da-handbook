@@ -15,6 +15,13 @@ Dates and strings are an analyst's daily grind: "revenue by month", "events in t
 - `value::type` — cast a type (`'2026-01-01'::date`).
 :::
 
+:::note[Data flow]
+Input: date and text columns
+→ Processing: date functions (`DATE_TRUNC`, `EXTRACT`, intervals) and string ones (`SUBSTRING`, `LOWER`, `LIKE`) cast/slice the values
+→ Output: the time slices you need and cleaned/parsed text.
+Why: "by month", "last 30 days", normalizing and parsing strings.
+:::
+
 ## Why you need it
 
 Raw data is almost always "dirty": dates in different formats, phones with spaces, emails in mixed case. Plus any time-based report is grouping by days/months. Without dates and strings you can't build a single metric.

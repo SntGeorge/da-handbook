@@ -18,6 +18,13 @@ SELECT customer_id, SUM(amount) FROM paid GROUP BY customer_id;
 Several CTEs can be chained, and a recursive CTE traverses hierarchies (employee → manager → manager's manager).
 :::
 
+:::note[Data flow]
+Input: table(s)
+→ Processing: `WITH` names an intermediate result → later steps reference it (in a chain or recursively)
+→ Output: the final table.
+Why: break a complex query into readable named steps instead of nested subqueries.
+:::
+
 ## Why you need it
 
 When a query grows into nested subqueries, it becomes unreadable. A CTE breaks the logic into **named steps**: first "paid orders", then "revenue per customer", then "top". Each step is visible and reusable.
