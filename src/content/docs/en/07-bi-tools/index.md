@@ -10,7 +10,7 @@ The BI choice depends on the region: Tableau dominates in the US, while Power BI
 
 ## What's inside
 
-- **Tableau** — a full course
-- **Power BI** — a full course with DAX
+- **Tableau** — a detailed walkthrough
+- **Power BI** — a detailed walkthrough with DAX
 - **Looker Studio** — a free alternative
 - **Metabase / Superset** — open-source

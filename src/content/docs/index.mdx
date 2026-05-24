@@ -1,6 +1,6 @@
 ---
 title: Data Analyst Handbook
-description: Личный справочник по Data Analyst — от установки инструментов до требований рекрутеров. SQL, Python, статистика, BI, продуктовая аналитика и A/B-тесты.
+description: Личный справочник по Data Analyst — от установки инструментов до A/B-экспериментов. SQL, Python, статистика, BI, продуктовая аналитика и A/B-тесты.
 template: splash
 head:
   - tag: title
@@ -12,13 +12,13 @@ head:
     content: |
       (function(){try{var k='da-lang-choice';if(!localStorage.getItem(k)&&!/^ru/i.test(navigator.language||'')){localStorage.setItem(k,'en');location.replace('/en/');}}catch(e){}})();
 hero:
-  tagline: От первой строчки <code>SELECT</code> до требований рекрутеров на middle-позиции. Один справочник, никаких 47 вкладок в браузере.
+  tagline: От первой строчки <code>SELECT</code> до дизайна A/B-экспериментов. Один справочник, никаких 47 вкладок в браузере.
   image:
     file: ../../assets/logo.svg
   actions:
-    - text: Карта обучения
-      link: /00-intro/learning-roadmap/
-      icon: open-book
+    - text: Открыть справочник
+      link: /00-intro/
+      icon: right-arrow
       variant: primary
 ---
 
@@ -113,6 +113,6 @@ import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
   </Card>
 </CardGrid>
 
-<Aside type="note" title="Это рабочая шпаргалка, не курс">
-Сайт растёт вместе с моим обучением. Если видишь пустой раздел — значит, до него ещё не дошёл. Возвращайся через пару недель.
+<Aside type="note" title="Справочник, а не курс">
+Это не пошаговый курс, а справочник: заходи в любой раздел и бери нужное — страницы самодостаточны и не требуют читать предыдущие. Материал покрывает то, что ждут от аналитика на junior/middle-позициях.
 </Aside>

@@ -10,7 +10,7 @@ sidebar:
 
 ## Что внутри
 
-- **Tableau** — полный курс
-- **Power BI** — полный курс с DAX
+- **Tableau** — подробный разбор
+- **Power BI** — подробный разбор с DAX
 - **Looker Studio** — бесплатная альтернатива
 - **Metabase / Superset** — open-source
