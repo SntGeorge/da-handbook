@@ -9,6 +9,13 @@ sidebar:
 To pull data from a database into pandas you need two building blocks: a **connection engine** (usually via SQLAlchemy) and **`pd.read_sql`**, which returns a query result directly as a DataFrame. Always pass query parameters separately (`params=`) rather than concatenating into the string — that's protection against SQL injection.
 :::
 
+:::note[Data flow]
+Input: tables in a DB (PostgreSQL, etc.)
+→ Processing: a SQLAlchemy engine opens a connection, `pd.read_sql` runs the query on the database side
+→ Output: the query result directly as a DataFrame.
+Why: the database does the heavy filtering/aggregation, and pandas gets a ready compact result.
+:::
+
 ## Why you need it
 
 Most often data lives in a database, not in files. The SQL + pandas combo is a daily workflow: the database does the heavy filtering and aggregation (fast, close to the data), and pandas does the fine analysis and charts.

@@ -9,6 +9,21 @@ sidebar:
 This page ties everything from the section into working scenarios: an **ETL pipeline** (load → clean → compute), **exploring an export from a PM**, **cohort analysis** and an **A/B test with pandas + scipy**. These are templates that appear in work and in interviews almost verbatim.
 :::
 
+:::note[Data flow]
+Input: a raw source (file / DB / API)
+→ Processing: one pipeline — load → clean → transform → analyze
+→ Output: an answer/chart/table for a decision.
+Why: assemble the section's building blocks into a complete "from raw to insights" analysis.
+:::
+
+A typical analysis notebook is a three-step pipeline:
+
+```mermaid
+flowchart LR
+    E["Extract<br/>read_csv / read_sql / API"] --> T["Transform<br/>cleaning + grouping"]
+    T --> L["Load / analysis<br/>metrics, chart, conclusion"]
+```
+
 ## Why you need it
 
 Individual techniques (filters, grouping, merge) are bricks on their own. The value appears when a complete analysis is assembled from them. Below are typical builds you can use as a starting point.

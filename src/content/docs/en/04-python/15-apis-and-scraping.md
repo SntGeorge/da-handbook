@@ -9,6 +9,13 @@ sidebar:
 Web data is fetched two ways: an **API** (via `requests` — returns ready JSON, the preferred path) and **scraping** HTML (`BeautifulSoup` — when there's no API). Always respect `robots.txt`, rate limits and terms of use — otherwise you risk a block or breaking the law.
 :::
 
+:::note[Data flow]
+Input: an external web source (an API or an HTML page)
+→ Processing: `requests` fetches the response → parse (`.json()` or BeautifulSoup) → `json_normalize` into a table
+→ Output: a DataFrame with data from the web.
+Why: get data that isn't in your DB (rates, weather, job postings, registries).
+:::
+
 ## Why you need it
 
 Not all data is in a database: exchange rates, weather, open registries, metrics from external services. APIs and scraping let you pull them into analysis. An API is the civilized way; scraping is the last resort when there's no API.

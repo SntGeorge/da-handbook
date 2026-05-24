@@ -9,6 +9,13 @@ sidebar:
 Data arrives as files: CSV, Excel, JSON, sometimes Parquet. The main trap is **encoding and delimiter in CSV**. For large files there's `chunksize` (read in parts) and Parquet (a fast columnar format). Nested JSON is unfolded with `json_normalize`.
 :::
 
+:::note[Data flow]
+Input: a file (CSV / Excel / JSON / Parquet)
+→ Processing: `read_*` with the right parameters (encoding, sep, decimal); `to_*` to write
+→ Output: a DataFrame in memory (or a saved result file).
+Why: correctly reading a "raw" file — the first step of any analysis.
+:::
+
 ## Why you need it
 
 An analyst receives 90% of exports as files. Being able to read them correctly (especially a "broken" CSV from accounting software or an export from someone else's system) is a basic skill, without which analysis won't even start.

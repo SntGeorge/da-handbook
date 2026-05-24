@@ -9,6 +9,13 @@ sidebar:
 pandas is the analyst's main tool in Python. The core objects are **`Series`** (one column) and **`DataFrame`** (a table). Data is read in one line (`pd.read_csv`, `read_excel`, `read_sql`), and the first look is done with `head()`, `info()`, `describe()`.
 :::
 
+:::note[Data flow]
+Input: a source (CSV / Excel / JSON / DB)
+→ Processing: `read_*` loads into a DataFrame, inspect with `head`/`info`/`describe`
+→ Output: a table in memory, ready for filters, grouping and charts.
+Why: turn a file/export into an object convenient to work with in code.
+:::
+
 ## Why you need it
 
 pandas is "Excel in code": tables, filters, grouping, pivots — but reproducible, at any scale, with no manual clicking. Almost all of an analyst's Python work goes through pandas.
