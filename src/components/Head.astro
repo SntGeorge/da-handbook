@@ -1,0 +1,78 @@
+---
+// Переопределение стандартного <Head> Starlight.
+// Рендерит дефолтный head (с пробросом всех props маршрута) и добавляет
+// клиентский скрипт для Mermaid-диаграмм: rehype-mermaid в режиме
+// pre-mermaid оставляет <pre class="mermaid">, а рендер происходит здесь.
+// mermaid (~600 КБ) грузится лениво — только на страницах с диаграммами.
+import Default from '@astrojs/starlight/components/Head.astro';
+import type { Props } from '@astrojs/starlight/props';
+
+const props = Astro.props as Props;
+---
+
+<Default {...props} />
+
+<script>
+  type Diagram = { el: HTMLElement; code: string; id: string };
+  let diagrams: Diagram[] = [];
+  let mermaidApi: typeof import('mermaid').default | null = null;
+
+  function mermaidTheme(): 'default' | 'dark' {
+    return document.documentElement.dataset.theme === 'light' ? 'default' : 'dark';
+  }
+
+  async function renderAll() {
+    if (diagrams.length === 0) return;
+    if (!mermaidApi) {
+      mermaidApi = (await import('mermaid')).default;
+    }
+    mermaidApi.initialize({
+      startOnLoad: false,
+      theme: mermaidTheme(),
+      fontFamily: 'inherit',
+      securityLevel: 'strict',
+    });
+    for (const d of diagrams) {
+      try {
+        const { svg } = await mermaidApi.render(d.id, d.code);
+        d.el.innerHTML = svg;
+      } catch (err) {
+        console.error('Mermaid render error:', err);
+        d.el.innerHTML = `<pre class="mermaid-error">${d.code}</pre>`;
+      }
+    }
+  }
+
+  // Заменяем каждый <pre class="mermaid"> на контейнер, запоминая исходник,
+  // чтобы можно было перерисовать при смене темы.
+  function collect() {
+    diagrams = [];
+    document.querySelectorAll<HTMLElement>('pre.mermaid').forEach((pre, i) => {
+      const code = pre.textContent ?? '';
+      const container = document.createElement('div');
+      container.className = 'mermaid-diagram';
+      pre.replaceWith(container);
+      diagrams.push({
+        el: container,
+        code,
+        id: `mermaid-${i}-${Math.random().toString(36).slice(2)}`,
+      });
+    });
+  }
+
+  function init() {
+    collect();
+    renderAll();
+  }
+
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+
+  // Поддержка переходов между страницами (если включён ClientRouter).
+  document.addEventListener('astro:page-load', init);
+
+  // Перерисовка при переключении светлой/тёмной темы.
+  new MutationObserver((mutations) => {
+    if (mutations.some((m) => m.attributeName === 'data-theme')) renderAll();
+  }).observe(document.documentElement, { attributes: true });
+</script>

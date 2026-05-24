@@ -14,7 +14,10 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
-      [rehypeMermaid, { strategy: 'img-svg', dark: true }],
+      // strategy: 'pre-mermaid' — НЕ рендерит диаграммы на сборке (не нужен
+      // headless-браузер/Playwright), а оставляет <pre class="mermaid"> для
+      // рендера на клиенте. Сам рендер делает src/components/Head.astro.
+      [rehypeMermaid, { strategy: 'pre-mermaid' }],
       rehypeKatex,
     ],
     shikiConfig: {
@@ -177,7 +180,8 @@ export default defineConfig({
         },
       ],
       components: {
-        // Здесь можно переопределять стандартные компоненты Starlight
+        // Переопределяем Head, чтобы добавить клиентский рендер Mermaid-диаграмм.
+        Head: './src/components/Head.astro',
       },
     }),
     sitemap(),
