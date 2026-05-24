@@ -264,6 +264,50 @@ pre.mermaid {
   color: var(--sl-color-text);
 }
 
+/* === ЛЁГКИЕ ГЛОБАЛЬНЫЕ ВЗАИМОДЕЙСТВИЯ === */
+/* Всё уважает prefers-reduced-motion и работает на всех страницах. */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Карточки-ссылки чуть приподнимаются */
+  .sl-link-card {
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .sl-link-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .card {
+    transition: border-color 0.15s ease;
+  }
+}
+
+/* Подсветка строки таблицы при наведении — помогает читать широкие таблицы */
+.sl-markdown-content tbody tr {
+  transition: background-color 0.12s ease;
+}
+.sl-markdown-content tbody tr:hover {
+  background: var(--sl-color-hairline-shade);
+}
+
+/* Карточки — акцентная рамка на ховере */
+.sl-link-card:hover,
+.card:hover {
+  border-color: var(--sl-color-accent);
+}
+
+/* Пункты сайдбара — мягкая подложка на ховере */
+.sidebar a {
+  transition: background-color 0.12s ease, color 0.12s ease;
+  border-radius: 0.25rem;
+}
+.sidebar a:not([aria-current='page']):hover {
+  background: var(--sl-color-hairline-shade);
+}
+
 /* === ШАПКА: длинный заголовок на мобильных === */
 @media (max-width: 50rem) {
   a.site-title {

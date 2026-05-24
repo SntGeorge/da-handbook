@@ -32,3 +32,6 @@ pnpm-debug.log*
 # editors
 .vscode/
 .idea/
+
+# приватная dev-документация (инструкции по сборке/деплою — только локально)
+README.dev.md
