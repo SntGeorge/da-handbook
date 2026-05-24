@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <rect x="0" y="0" width="40" height="40" rx="8" fill="#0a0a0a"/>
+  <rect x="0" y="32" width="40" height="8" fill="#f97316"/>
+  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="ui-monospace, monospace" font-weight="700" font-size="18" fill="#fafaf9">da</text>
+</svg>

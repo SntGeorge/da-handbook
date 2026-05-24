@@ -1,0 +1,8 @@
+# Разрешаем нативным пакетам (esbuild, sharp) запускать build/postinstall-скрипты
+# при установке. Без этого pnpm 10+ блокирует скрипты и `pnpm install` падает.
+allowBuilds:
+  esbuild: true
+  sharp: true
+# Не запускать проверку синхронизации зависимостей перед каждым `pnpm run`
+# (иначе на некоторых версиях pnpm команда падает на предупреждении о build-скриптах).
+verifyDepsBeforeRun: false

@@ -1,0 +1,223 @@
+/*
+ * Data Analyst Handbook — кастомные стили
+ * Базируется на CSS-переменных Starlight.
+ * Палитра: тёмный графит + оранжевый акцент (orange-500).
+ */
+
+:root {
+  /* === АКЦЕНТНЫЙ ЦВЕТ (оранжевый) === */
+  /* Tailwind orange шкала */
+  --sl-color-accent-low: #431407;
+  --sl-color-accent: #ea580c;
+  --sl-color-accent-high: #fed7aa;
+
+  /* === ТИПОГРАФИКА === */
+  --sl-font: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sl-font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* === РАЗМЕРЫ === */
+  --sl-text-base: 1rem;
+  --sl-line-height: 1.7;
+
+  /* Контентная область чуть шире для код-блоков SQL */
+  --sl-content-width: 50rem;
+  --sl-sidebar-width: 20rem;
+}
+
+/* === ТЁМНАЯ ТЕМА (по умолчанию) === */
+:root[data-theme='dark'] {
+  /* Фон: глубокий графит, не чисто чёрный — глазам легче */
+  --sl-color-bg: #0a0a0a;
+  --sl-color-bg-nav: #0a0a0a;
+  --sl-color-bg-sidebar: #0a0a0a;
+  --sl-color-bg-inline-code: #1a1a1a;
+
+  /* Текст: тёплый off-white, не ярко-белый */
+  --sl-color-text: #e8e6e3;
+  --sl-color-text-accent: #fb923c;
+  --sl-color-text-invert: #0a0a0a;
+
+  /* Границы и разделители */
+  --sl-color-hairline: #1f1f1f;
+  --sl-color-hairline-light: #2a2a2a;
+  --sl-color-hairline-shade: #141414;
+
+  /* Акцент */
+  --sl-color-accent-low: #431407;
+  --sl-color-accent: #f97316;
+  --sl-color-accent-high: #fdba74;
+}
+
+/* === СВЕТЛАЯ ТЕМА (на всякий случай) === */
+:root[data-theme='light'] {
+  --sl-color-bg: #fafaf9;
+  --sl-color-text: #1c1917;
+  --sl-color-text-accent: #c2410c;
+  --sl-color-accent-low: #fed7aa;
+  --sl-color-accent: #ea580c;
+  --sl-color-accent-high: #7c2d12;
+}
+
+/* === ССЫЛКИ С ХАРАКТЕРОМ === */
+.sl-markdown-content a:not(.not-content *) {
+  text-decoration: none;
+  border-bottom: 1px solid var(--sl-color-accent);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.sl-markdown-content a:not(.not-content *):hover {
+  color: var(--sl-color-accent-high);
+  border-bottom-color: var(--sl-color-accent-high);
+}
+
+/* === ЗАГОЛОВКИ — повышенная плотность характера === */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.sl-markdown-content h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5em;
+}
+
+.sl-markdown-content h2 {
+  border-top: 1px solid var(--sl-color-hairline);
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+/* Подчёркивание оранжевым у H2 — фирменная деталь */
+.sl-markdown-content h2::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--sl-color-accent);
+  margin-bottom: 1rem;
+}
+
+/* === КОД ИНЛАЙН === */
+.sl-markdown-content :not(pre) > code:not(.not-content *) {
+  background: var(--sl-color-bg-inline-code);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.4em;
+  font-size: 0.875em;
+  color: var(--sl-color-accent-high);
+}
+
+/* === БЛОКИ КОДА: убираем лишнюю тень, добавляем тонкую рамку === */
+.expressive-code {
+  margin: 1.5rem 0;
+}
+
+.expressive-code .frame {
+  border: 1px solid var(--sl-color-hairline);
+}
+
+/* === SIDEBAR === */
+.sidebar-pane {
+  border-right: 1px solid var(--sl-color-hairline);
+}
+
+/* Активный пункт sidebar — оранжевая полоска */
+.sidebar a[aria-current='page'] {
+  background: linear-gradient(
+    90deg,
+    var(--sl-color-accent-low) 0%,
+    transparent 100%
+  );
+  border-left: 2px solid var(--sl-color-accent);
+  font-weight: 600;
+}
+
+/* === БЕЙДЖИ === */
+.sl-badge {
+  font-family: var(--sl-font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* === ТАБЛИЦЫ === */
+.sl-markdown-content table:not(.not-content *) {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.sl-markdown-content th:not(.not-content *) {
+  background: var(--sl-color-hairline-shade);
+  font-family: var(--sl-font-mono);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-accent-high);
+  border-bottom: 2px solid var(--sl-color-accent);
+}
+
+.sl-markdown-content td:not(.not-content *),
+.sl-markdown-content th:not(.not-content *) {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--sl-color-hairline);
+}
+
+/* === ASIDE (callouts) === */
+.starlight-aside {
+  border-left-width: 3px;
+}
+
+/* === DETAILS / SUMMARY (для задач с раскрывающимися ответами) === */
+.sl-markdown-content details {
+  background: var(--sl-color-hairline-shade);
+  border: 1px solid var(--sl-color-hairline);
+  border-left: 3px solid var(--sl-color-accent);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.sl-markdown-content details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--sl-color-accent-high);
+}
+
+.sl-markdown-content details[open] summary {
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  padding-bottom: 0.75rem;
+}
+
+/* === MERMAID === */
+.sl-markdown-content svg[id^='mermaid'] {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+/* === HERO === */
+.hero {
+  padding: 2rem 0;
+}
+
+/* === SCROLLBAR (webkit) === */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sl-color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sl-color-hairline-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sl-color-accent);
+}

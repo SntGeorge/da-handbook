@@ -1,0 +1,18 @@
+/*
+ * Шрифты: Geist (sans) и JetBrains Mono (mono).
+ *
+ * ВАЖНО для приватности и производительности:
+ * Для продакшна рекомендуется скачать шрифты локально в /public/fonts/
+ * и заменить ссылки. Сейчас используется bunny.net (privacy-friendly CDN,
+ * совместим с Google Fonts API, не трекает пользователей).
+ */
+
+@import url('https://fonts.bunny.net/css?family=jetbrains-mono:400,500,600|geist:400,500,600,700&display=swap');
+
+/* Fallback на системные шрифты, пока загружается основной */
+@supports (font-variation-settings: normal) {
+  :root {
+    --sl-font: 'Geist', system-ui, sans-serif;
+    --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}

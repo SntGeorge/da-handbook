@@ -1,0 +1,120 @@
+---
+title: Data Analyst Handbook
+description: Личный справочник по Data Analyst — от установки инструментов до требований рекрутеров. SQL, Python, статистика, BI, продуктовая аналитика и A/B-тесты.
+template: splash
+head:
+  - tag: title
+    content: Data Analyst Handbook — справочник для аналитика данных
+hero:
+  tagline: От первой строчки <code>SELECT</code> до требований рекрутеров на middle-позиции. Один справочник, никаких 47 вкладок в браузере.
+  image:
+    file: ../../assets/logo.svg
+  actions:
+    - text: Начать с SQL
+      link: /02-sql/
+      icon: right-arrow
+      variant: primary
+    - text: Карта обучения
+      link: /00-intro/learning-roadmap/
+      icon: open-book
+      variant: secondary
+    - text: GitHub
+      link: https://github.com/your-username/data-analyst-handbook
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
+
+## Что внутри
+
+Тринадцать разделов, охватывающих всё, что от Data Analyst ждёт рынок СНГ, Европы и США в 2026 году. Каждый раздел — это не только теория, но и типовые задачи с собеседований, частые ошибки и ссылки на внешние ресурсы для практики.
+
+<CardGrid>
+  <LinkCard
+    title="00 · Введение"
+    description="Кто такой DA, виды аналитиков, дорожная карта обучения и анализ рынка."
+    href="/00-intro/"
+  />
+  <LinkCard
+    title="01 · Установка и окружение"
+    description="Python, PostgreSQL, DBeaver, Git, VS Code — настраиваем рабочее место."
+    href="/01-setup/"
+  />
+  <LinkCard
+    title="02 · SQL"
+    description="Язык №1 для аналитика: от SELECT до оконных функций и оптимизации."
+    href="/02-sql/"
+  />
+  <LinkCard
+    title="03 · Excel и Google Sheets"
+    description="Формулы, сводные таблицы, Power Query, особенности Google Sheets."
+    href="/03-excel/"
+  />
+  <LinkCard
+    title="04 · Python для анализа"
+    description="pandas, numpy, matplotlib, seaborn — рабочая лошадка аналитика."
+    href="/04-python/"
+  />
+  <LinkCard
+    title="05 · Статистика"
+    description="От описательной статистики до проверки гипотез и A/B-тестов."
+    href="/05-statistics/"
+  />
+  <LinkCard
+    title="06 · Визуализация"
+    description="Принципы визуализации, выбор графика, storytelling с данными."
+    href="/06-visualization/"
+  />
+  <LinkCard
+    title="07 · BI-инструменты"
+    description="Tableau, Power BI, Looker Studio, Metabase, Superset."
+    href="/07-bi-tools/"
+  />
+  <LinkCard
+    title="08 · Продуктовая аналитика"
+    description="Метрики, юнит-экономика, когорты, retention, Amplitude, Mixpanel."
+    href="/08-product-analytics/"
+  />
+  <LinkCard
+    title="09 · A/B-тестирование"
+    description="Дизайн, размер выборки, анализ результатов, типичные ошибки."
+    href="/09-ab-testing/"
+  />
+  <LinkCard
+    title="10 · ML-база"
+    description="Регрессии, деревья, кластеризация — то, что нужно знать аналитику."
+    href="/10-ml-basics/"
+  />
+  <LinkCard
+    title="11 · Современный стек"
+    description="Snowflake, BigQuery, ClickHouse, dbt, Airflow, моделирование DWH."
+    href="/11-modern-stack/"
+  />
+  <LinkCard
+    title="12 · Карьера"
+    description="Резюме, портфолио, поиск работы, собеседования, переговоры по офферу."
+    href="/12-career/"
+  />
+</CardGrid>
+
+## Как этим пользоваться
+
+<CardGrid>
+  <Card title="С нуля" icon="rocket">
+    Если ты начинаешь — иди по порядку. Сначала [Введение](/00-intro/) и [Установка](/01-setup/), потом [SQL](/02-sql/) и [Python](/04-python/).
+  </Card>
+  <Card title="Освежить тему" icon="magnifier">
+    Используй поиск (Cmd/Ctrl + K) или sidebar. Каждая страница самодостаточна — можно читать с любого места.
+  </Card>
+  <Card title="К собесу" icon="approve-check">
+    В каждом разделе есть страница с типовыми задачами. Раздел [Карьера](/12-career/) — про резюме и интервью целиком.
+  </Card>
+  <Card title="Найти источники" icon="external">
+    В конце каждой страницы — ссылки на внешние материалы для углубления.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="Это рабочая шпаргалка, не курс">
+Сайт растёт вместе с моим обучением. Если видишь пустой раздел — значит, до него ещё не дошёл. Возвращайся через пару недель.
+</Aside>
