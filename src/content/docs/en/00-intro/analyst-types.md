@@ -76,5 +76,4 @@ Not necessarily. At junior level the specialization is often blurry, and compani
 ## What's next
 
 - [Market stack 2026](/en/00-intro/market-stack-2026/) — which of this recruiters actually ask for.
-- [Learning roadmap](/en/00-intro/learning-roadmap/) — the order to master the common base.
 - [Product analytics](/en/08-product-analytics/01-key-metrics/) and [A/B tests](/en/09-ab-testing/01-fundamentals/) — if you lean toward product.

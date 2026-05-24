@@ -85,4 +85,3 @@ Basically yes: SQL is mandatory everywhere, Python/spreadsheets almost everywher
 
 - [Types of analysts](/en/00-intro/analyst-types/) — product, marketing, BI and how they differ.
 - [Market stack 2026](/en/00-intro/market-stack-2026/) — what job postings actually require.
-- [Learning roadmap](/en/00-intro/learning-roadmap/) — where to start and in what order.

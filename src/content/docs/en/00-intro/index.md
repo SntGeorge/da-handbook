@@ -13,9 +13,8 @@ This section is the starting point. Before diving into SQL, Python and BI tools,
 - **Who is a Data Analyst** — responsibilities, a typical day, differences from Data Scientist and Data Engineer.
 - **Types of analysts** — product, marketing, BI, financial, systems.
 - **Market stack 2026** — what the CIS, Europe and the US require. From real job postings.
-- **Learning roadmap** — the order to study topics in and how much time to budget.
 - **How to use this site** — navigation, search, page format.
 
 ## Where to start
 
-If you're at the very beginning — go through this section's pages in order. If you already know something — open the [learning roadmap](/en/00-intro/learning-roadmap/) and assess your gaps.
+If you're at the very beginning — go through this section's pages in order. If you already know something — open the topic you need via search (Cmd/Ctrl + K) or the sidebar.

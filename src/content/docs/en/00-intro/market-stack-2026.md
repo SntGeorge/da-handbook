@@ -91,6 +91,5 @@ The US more often requires cloud warehouses (Snowflake/BigQuery/Redshift) and db
 
 ## What's next
 
-- [Learning roadmap](/en/00-intro/learning-roadmap/) — turning this list into a week-by-week plan.
 - [SQL](/en/02-sql/01-rdbms-concepts/) — starting with the foundation.
 - [Career section](/en/12-career/) — resume, job search, interviews and salary negotiation.
