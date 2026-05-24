@@ -32,6 +32,24 @@ flowchart LR
 - Arrows set the order: `C` doesn't start until `B` is done.
 - A DAG is described in Python code (schedule, tasks, dependencies).
 
+What a minimal DAG looks like in code:
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+import pendulum
+
+with DAG(
+    dag_id="daily_marts",
+    schedule="0 6 * * *",                  # every day at 06:00 (cron)
+    start_date=pendulum.datetime(2026, 1, 1),
+    catchup=False,                          # don't auto-backfill all missed days
+) as dag:
+    extract = BashOperator(task_id="extract", bash_command="python extract.py")
+    transform = BashOperator(task_id="dbt_run", bash_command="dbt build")
+    extract >> transform                    # order: extract first, then dbt
+```
+
 ## Basic operators
 
 A task is created by an **operator** — a template for a type of work:
@@ -39,7 +57,12 @@ A task is created by an **operator** — a template for a type of work:
 - **PythonOperator** — run a Python function.
 - **BashOperator** — a shell command.
 - **SQL operators** — a query to a DB/DWH.
+- **Sensor** — wait for an event (a file appeared, a source table is ready).
 - Ready-made integrations — running dbt, extracting from sources, etc.
+
+:::caution[Tasks must be idempotent]
+Airflow reruns failed tasks (`retries`) and runs backfills — so re-running for the same day **must not** double the data. Write steps so a rerun gives the same result: not a blind `INSERT`, but overwriting a partition / a `MERGE` by key for the run's date. A non-idempotent pipeline will double the revenue on the very first retry.
+:::
 
 ## Scheduling
 

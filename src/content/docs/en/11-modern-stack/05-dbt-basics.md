@@ -33,6 +33,31 @@ GROUP BY country
 
 `ref()` is the heart of dbt: it links models, and `dbt run` builds them in the right order.
 
+## Project structure and layers
+
+A typical project is split into **layers** — a widely used convention that gets asked about:
+
+```text
+models/
+  staging/    # stg_*  — 1:1 with the source: rename, cast types
+  marts/      # fct_*, dim_* — business marts, the star (see data modeling)
+dbt_project.yml   # the project config
+```
+
+- **staging** — light cleaning of raw sources (one stg file per source table), materialized as a `view`.
+- **marts** — final marts for analytics and BI, materialized as `table`/`incremental`.
+
+The flow: `source → staging → marts`, links via `ref()`/`source()`.
+
+## Core commands
+
+```bash
+dbt run            # build all models (CREATE TABLE/VIEW)
+dbt test           # run data tests
+dbt build          # run + test + seed along the dependency graph (recommended)
+dbt docs generate  # build documentation and the dependency graph (lineage)
+```
+
 ## Materializations
 
 How exactly a model "materializes" in the DWH:
@@ -44,7 +69,19 @@ How exactly a model "materializes" in the DWH:
 | **incremental** | appends only new rows | large growing tables |
 | **ephemeral** | inlined as a CTE, not materialized | intermediate logic |
 
-`incremental` is critical for big data: recomputing billions of rows every time is expensive.
+`incremental` is critical for big data: recomputing billions of rows every time is expensive. Inside an incremental model, `is_incremental()` appends only the fresh rows:
+
+```sql
+{{ config(materialized='incremental', unique_key='order_id') }}
+
+SELECT * FROM {{ ref('stg_orders') }}
+{% if is_incremental() %}
+  -- on an incremental run, take only rows newer than what's already loaded
+  WHERE updated_at > (SELECT MAX(updated_at) FROM {{ this }})
+{% endif %}
+```
+
+The first `dbt run` builds the whole table, subsequent ones append only new rows.
 
 ## Tests
 

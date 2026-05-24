@@ -39,14 +39,27 @@ In a row store a row sits contiguously — convenient to fetch one order. In a c
 
 ## The modern players
 
-| Warehouse | Feature |
-|-----------|---------|
-| **Snowflake** | storage/compute separation, multi-cloud |
-| **BigQuery** | serverless from Google, pay per query volume |
-| **Redshift** | a DWH from AWS |
-| **Databricks** | Lakehouse, strong in ML/Spark |
+| Warehouse | Cloud | Pricing model | When chosen |
+|-----------|-------|---------------|-------------|
+| **Snowflake** | AWS/Azure/GCP | by compute running time (credits) | multi-cloud, convenience, isolating teams' workloads |
+| **BigQuery** | Google Cloud | by volume of data scanned | Google ecosystem (GA4), serverless, no admin |
+| **Redshift** | AWS | by provisioned nodes (or serverless) | everything is already in AWS |
+| **Databricks** | AWS/Azure/GCP | by compute (DBU) | heavy ML/Spark, Lakehouse |
+| **ClickHouse** | self-host / Cloud | your own server or cloud | extreme speed on events, popular in the CIS |
 
-In the CIS, [ClickHouse](/en/11-modern-stack/04-clickhouse/) is added to this, very popular locally.
+[ClickHouse](/en/11-modern-stack/04-clickhouse/) is almost a standard for product analytics in the CIS, so it has its own page.
+
+## ETL vs ELT
+
+An important shift the whole modern stack rests on. Data used to be **transformed before loading** into the warehouse (ETL), now it's **after** (ELT):
+
+| | ETL (the old approach) | ELT (modern) |
+|--|------------------------|--------------|
+| Order | Extract → **Transform** → Load | Extract → Load → **Transform** |
+| Where transformation happens | on a separate server before the DWH | **inside the DWH** via SQL |
+| Tools | expensive ETL suites | loading (Fivetran/Airbyte) + [dbt](/en/11-modern-stack/05-dbt-basics/) |
+
+Why the move to ELT: cloud DWHs are cheap to store in and powerful at computing — it's easier to dump the raw data as-is and transform it with SQL queries right in the warehouse. Hence the role of [dbt](/en/11-modern-stack/05-dbt-basics/) (the T layer) and an [orchestrator](/en/11-modern-stack/06-airflow-basics/).
 
 ## Lakehouse
 

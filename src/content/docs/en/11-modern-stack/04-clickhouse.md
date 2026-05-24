@@ -37,6 +37,19 @@ ORDER BY (event_date, user_id);     -- sorting key = fast range queries
 
 Sorting by the key gives fast range lookups and works as a primary index. People often add monthly partitioning (`PARTITION BY toYYYYMM(event_date)`).
 
+MergeTree has **engine variants** for different tasks — they "collapse" rows with the same sorting key differently during background merges:
+
+| Engine | What it does on merge | When |
+|--------|-----------------------|------|
+| **MergeTree** | nothing, keeps all rows | raw events |
+| **ReplacingMergeTree** | keeps the latest version per key | deduplication, "latest state" |
+| **SummingMergeTree** | sums numeric columns by key | pre-aggregates |
+| **AggregatingMergeTree** | stores aggregate states | complex precomputations with MVs |
+
+:::caution["Collapsing" doesn't happen immediately]
+ReplacingMergeTree removes duplicates only during a background merge of parts — the timing isn't controllable. To reliably see the collapsed result in a query, add the `FINAL` modifier (`SELECT ... FROM t FINAL`) — but it's slow, don't overuse it on large data.
+:::
+
 ## ARRAY JOIN
 
 ClickHouse can store **arrays** in a cell (e.g. a list of items in an order). `ARRAY JOIN` "unfolds" the array into rows — the unnest analog:
@@ -52,6 +65,18 @@ Handy for event data where attributes arrive as lists.
 ## Materialized views
 
 In ClickHouse a **materialized view** works like an insert trigger: when data is written to the source table, it automatically computes an aggregate and stores it in another table. This way "revenue by day" is computed on the fly, and dashboards read a small ready result instead of recomputing over billions of rows.
+
+```sql
+-- the MV computes daily revenue right as new events are inserted
+CREATE MATERIALIZED VIEW revenue_daily_mv
+ENGINE = SummingMergeTree()
+ORDER BY day AS
+SELECT toDate(event_date) AS day, sum(amount) AS revenue
+FROM events
+GROUP BY day;
+```
+
+Now the dashboard reads the tiny `revenue_daily_mv` (one row per day) instead of aggregating billions of `events` rows every time it opens.
 
 ## Practice tasks
 

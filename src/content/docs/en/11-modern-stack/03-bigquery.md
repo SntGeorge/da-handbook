@@ -29,12 +29,22 @@ The main saving tools, since you pay for the scanned volume:
 - **Clustering** — data within a partition is ordered by chosen columns, which further reduces reads when filtering by them.
 
 ```sql
+-- set partitioning by day and clustering by country at table creation
+CREATE TABLE `project.dataset.orders`
+PARTITION BY DATE(event_ts)
+CLUSTER BY country AS
+SELECT * FROM `project.dataset.orders_raw`;
+
 -- a filter on the partitioned field sharply cuts the scan volume and price
 SELECT country, SUM(amount)
 FROM `project.dataset.orders`
-WHERE event_date BETWEEN '2026-01-01' AND '2026-01-31'   -- reads 1 month, not all
+WHERE DATE(event_ts) BETWEEN '2026-01-01' AND '2026-01-31'   -- reads 1 month, not all
 GROUP BY country;
 ```
+
+:::tip[Count the money: how many bytes the query will read]
+On-demand costs roughly **$6 per 1 TB** scanned. Before running, check the volume: the BigQuery UI shows an estimate "This query will process X" on the right, or from the CLI — `bq query --dry_run` (doesn't run, just shows the bytes). If an events table is 5 TB but a partition filter cuts the scan to 50 GB, that's a $30 vs $0.30 difference per run.
+:::
 
 ## Pricing: on-demand vs slots
 

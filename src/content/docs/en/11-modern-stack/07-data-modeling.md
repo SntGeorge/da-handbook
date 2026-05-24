@@ -37,6 +37,10 @@ flowchart TD
 
 A query "revenue by category for the quarter" = join the fact with dimensions and `GROUP BY` — simple and fast.
 
+:::caution[Kimball's first step — declare the grain]
+Before designing a fact table, clearly state **what one row is**: "one row = one order line item" or "one order" or "one payment". That's the **grain**. All metrics and keys must match this level. The most common mistake is mixing grains (order lines and the order itself in one table) → doubled sums on aggregation. State the grain in one sentence — then everything else designs itself unambiguously.
+:::
+
 ## Snowflake schema
 
 If you further normalize dimensions (product → category → department as separate tables), the star turns into a **snowflake**. Less duplication, but more joins and more complex queries. In analytics people usually prefer the "flattened" star for speed and simplicity.
@@ -51,6 +55,15 @@ A customer moved from Moscow to Berlin. What to do with old orders? That's the *
 
 The choice is critical: with Type 1 historical reports "rewrite themselves" retroactively. For correct analysis over time you more often need **Type 2**.
 :::
+
+What an SCD Type 2 dimension looks like — the customer has two version rows with validity intervals and a "current" flag:
+
+| customer_sk | customer_id | city | valid_from | valid_to | is_current |
+|-------------|-------------|------|------------|----------|------------|
+| 101 | C-1 | Moscow | 2024-01-01 | 2026-03-15 | false |
+| 102 | C-1 | Berlin | 2026-03-15 | 9999-12-31 | true |
+
+A fact references `customer_sk` (the surrogate key of the specific version), so an old order is forever tied to "Moscow" and a new one to "Berlin". A "current state" report filters `is_current = true`.
 
 ## Surrogate keys
 

@@ -30,16 +30,57 @@ A "warehouse" in Snowflake is a **compute cluster**, not storage (this confuses 
 - Each team/workload can have its own warehouse — they don't interfere.
 - You can set **auto-suspend** (sleep with no queries) and **auto-resume**.
 
+```sql
+-- create a compute cluster that sleeps after 60 sec idle
+CREATE WAREHOUSE analytics_wh
+  WAREHOUSE_SIZE = 'XSMALL'   -- XS, S, M, L, XL ... 6XL
+  AUTO_SUSPEND = 60           -- seconds idle before sleeping (don't burn credits)
+  AUTO_RESUME = TRUE;         -- wakes up on the next query
+```
+
+:::note[Warehouse size and credits]
+Each size step **doubles** both power and cost: XS = 1 credit/hour, S = 2, M = 4, L = 8, and so on. A credit is billed per second (minimum 60 sec after waking). Takeaway: XS/S is enough for dashboards and ad-hoc; a large warehouse is only for genuinely heavy transformations — and always with `AUTO_SUSPEND`.
+:::
+
 ## Time Travel and Zero-Copy Cloning
 
 Two signature features:
 
-- **Time Travel** — query data "as it was N days ago" or restore an accidentally dropped table. A lifesaver after a `DELETE` without `WHERE`.
-- **Zero-Copy Cloning** — an instant copy of a table/database **without duplicating data** (metadata is copied, the data is physically shared until changes). Handy for making a copy of production for testing without storage costs.
+- **Time Travel** — query data "as it was N days ago" or restore what was deleted:
+
+```sql
+-- the table's state 1 hour ago (before a botched UPDATE)
+SELECT * FROM orders AT (OFFSET => -3600);
+-- bring back an accidentally dropped table in one command
+UNDROP TABLE orders;
+```
+
+The default retention window is 1 day (up to 90 on Enterprise).
+
+- **Zero-Copy Cloning** — an instant copy without duplicating data (metadata is copied, the data is physically shared until changes):
+
+```sql
+-- a full copy of the prod database for testing in seconds, with no storage cost
+CREATE DATABASE analytics_dev CLONE analytics_prod;
+```
 
 ## SQL features
 
-Snowflake SQL is close to standard, plus: excellent handling of **semi-structured data** (the `VARIANT` type for JSON), the `FLATTEN` function to unfold nesting, `QUALIFY` to filter by [window functions](/en/02-sql/09-window-functions/) without a subquery.
+Snowflake SQL is close to standard, plus useful extensions:
+
+```sql
+-- VARIANT stores JSON as-is; access via : and unfold with FLATTEN
+SELECT t.value:item_id::int AS item_id
+FROM orders, LATERAL FLATTEN(input => orders.items) t;
+
+-- QUALIFY filters by a window function without a subquery wrapper
+SELECT order_id, amount,
+       ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY amount DESC) AS rn
+FROM orders
+QUALIFY rn = 1;     -- the top-1 order per customer
+```
+
+`VARIANT` + `FLATTEN` is for semi-structured data (JSON from an API), `QUALIFY` is a common shortcut for filtering by [window functions](/en/02-sql/09-window-functions/).
 
 ## Credits and cost optimization
 

@@ -47,6 +47,32 @@ models:
 
 Tests run alongside the pipeline ([Airflow](/en/11-modern-stack/06-airflow-basics/)): if data fails a check, the pipeline fails and broken data doesn't reach the dashboard.
 
+**Freshness** is a separate important test: "data no older than N hours". It's declared on the source:
+
+```yaml
+sources:
+  - name: shop
+    tables:
+      - name: orders
+        loaded_at_field: _loaded_at
+        freshness:
+          warn_after:  { count: 12, period: hour }   # warn
+          error_after: { count: 24, period: hour }   # fail the pipeline
+```
+
+Run it with `dbt source freshness`. This catches the most insidious case — tests are green, but **the data just didn't arrive**.
+
+A **custom test** (singular) is a plain SQL file in `tests/` that must return **zero rows**; if it returns rows, the test fails:
+
+```sql
+-- tests/assert_amount_non_negative.sql — find the "bad" rows
+SELECT order_id FROM {{ ref('orders') }} WHERE amount < 0
+```
+
+:::note[Severity: warn vs error]
+A test has a level: `error` (default — fails the pipeline) and `warn` (only warns). Critical things (key uniqueness) — `error`; "suspicious but not fatal" (a sharp volume spike) — often `warn`, so the whole load isn't blocked over a minor thing.
+:::
+
 ## Great Expectations
 
 A separate Python library for deeper and more flexible checks ("expectations"): value distributions, null share, statistical profiles, detailed validation reports. Used when built-in dbt tests aren't enough.
