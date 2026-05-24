@@ -1,0 +1,21 @@
+---
+// Переопределение футера Starlight: рендерим стандартный (навигация по
+// страницам, «последнее обновление») и добавляем строку копирайта со
+// ссылкой на репозиторий.
+import Default from '@astrojs/starlight/components/Footer.astro';
+import type { Props } from '@astrojs/starlight/props';
+
+const props = Astro.props as Props;
+const year = new Date().getFullYear();
+---
+
+<Default {...props} />
+
+<div class="site-copyright">
+  <p>
+    © {year} Data Analyst Handbook · код на
+    <a href="https://github.com/SntGeorge/da-handbook" target="_blank" rel="noopener noreferrer"
+      >GitHub</a
+    >
+  </p>
+</div>

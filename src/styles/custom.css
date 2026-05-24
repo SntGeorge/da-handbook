@@ -264,6 +264,22 @@ pre.mermaid {
   color: var(--sl-color-text);
 }
 
+/* === КОПИРАЙТ В ФУТЕРЕ === */
+.site-copyright {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sl-color-hairline);
+  font-size: 0.8125rem;
+  color: var(--sl-color-gray-3);
+}
+.site-copyright a {
+  color: var(--sl-color-text-accent);
+  text-decoration: none;
+}
+.site-copyright a:hover {
+  text-decoration: underline;
+}
+
 /* === ЛЁГКИЕ ГЛОБАЛЬНЫЕ ВЗАИМОДЕЙСТВИЯ === */
 /* Всё уважает prefers-reduced-motion и работает на всех страницах. */
 

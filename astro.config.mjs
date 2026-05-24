@@ -182,6 +182,8 @@ export default defineConfig({
       components: {
         // Переопределяем Head, чтобы добавить клиентский рендер Mermaid-диаграмм.
         Head: './src/components/Head.astro',
+        // Футер с копирайтом и ссылкой на репозиторий.
+        Footer: './src/components/Footer.astro',
       },
     }),
     sitemap(),
