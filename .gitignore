@@ -5,10 +5,21 @@ dist/
 # dependencies
 node_modules/
 
-# env
+# env / секреты — НИКОГДА не коммитим
 .env
-.env.production
-.env.*.local
+.env.*
+*.env
+# Cloudflare Wrangler: локальные секреты и состояние
+.dev.vars
+.dev.vars.*
+.wrangler/
+# Прочие потенциальные секреты/ключи
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+*.local.json
 
 # logs
 *.log

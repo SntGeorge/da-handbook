@@ -1,8 +1,8 @@
 ---
 // Переопределение стандартного <Head> Starlight.
 // Рендерит дефолтный head (с пробросом всех props маршрута) и добавляет
-// клиентский скрипт для Mermaid-диаграмм: rehype-mermaid в режиме
-// pre-mermaid оставляет <pre class="mermaid">, а рендер происходит здесь.
+// клиентский рендер Mermaid-диаграмм: rehype-mermaid в режиме pre-mermaid
+// оставляет <pre class="mermaid">, а рендер делаем здесь, в браузере.
 // mermaid (~600 КБ) грузится лениво — только на страницах с диаграммами.
 import Default from '@astrojs/starlight/components/Head.astro';
 import type { Props } from '@astrojs/starlight/props';
@@ -14,65 +14,76 @@ const props = Astro.props as Props;
 
 <script>
   type Diagram = { el: HTMLElement; code: string; id: string };
-  let diagrams: Diagram[] = [];
-  let mermaidApi: typeof import('mermaid').default | null = null;
 
-  function mermaidTheme(): 'default' | 'dark' {
+  // Список диаграмм текущей страницы. ВАЖНО: перезаписываем его только когда
+  // реально нашли <pre class="mermaid"> — иначе повторный вызов setup()
+  // (например, от astro:page-load на той же странице) очистил бы список и
+  // первый рендер ушёл бы «в пустоту». Это и был баг с пропадающей схемой.
+  let diagrams: Diagram[] = [];
+  let mermaidPromise: Promise<typeof import('mermaid').default> | null = null;
+
+  function loadMermaid() {
+    if (!mermaidPromise) {
+      mermaidPromise = import('mermaid').then((m) => m.default);
+    }
+    return mermaidPromise;
+  }
+
+  function currentTheme(): 'default' | 'dark' {
+    // data-theme может быть 'light' | 'dark'; при 'auto' Starlight всё равно
+    // проставляет конкретное значение. Нет значения — считаем тёмной.
     return document.documentElement.dataset.theme === 'light' ? 'default' : 'dark';
   }
 
-  async function renderAll() {
+  async function render() {
     if (diagrams.length === 0) return;
-    if (!mermaidApi) {
-      mermaidApi = (await import('mermaid')).default;
-    }
-    mermaidApi.initialize({
+    const mermaid = await loadMermaid();
+    mermaid.initialize({
       startOnLoad: false,
-      theme: mermaidTheme(),
+      theme: currentTheme(),
       fontFamily: 'inherit',
       securityLevel: 'strict',
     });
-    for (const d of diagrams) {
-      try {
-        const { svg } = await mermaidApi.render(d.id, d.code);
-        d.el.innerHTML = svg;
-      } catch (err) {
-        console.error('Mermaid render error:', err);
-        d.el.innerHTML = `<pre class="mermaid-error">${d.code}</pre>`;
-      }
-    }
+    await Promise.all(
+      diagrams.map(async (d) => {
+        try {
+          const { svg } = await mermaid.render(d.id, d.code);
+          d.el.innerHTML = svg;
+        } catch (err) {
+          console.error('Mermaid render error:', err);
+          d.el.textContent = d.code;
+        }
+      })
+    );
   }
 
-  // Заменяем каждый <pre class="mermaid"> на контейнер, запоминая исходник,
-  // чтобы можно было перерисовать при смене темы.
-  function collect() {
+  // Заменяем каждый <pre class="mermaid"> на контейнер, запоминая исходник.
+  function setup() {
+    const blocks = document.querySelectorAll<HTMLElement>('pre.mermaid');
+    if (blocks.length === 0) return; // ничего нового — список не трогаем
     diagrams = [];
-    document.querySelectorAll<HTMLElement>('pre.mermaid').forEach((pre, i) => {
+    blocks.forEach((pre, i) => {
       const code = pre.textContent ?? '';
       const container = document.createElement('div');
       container.className = 'mermaid-diagram';
       pre.replaceWith(container);
-      diagrams.push({
-        el: container,
-        code,
-        id: `mermaid-${i}-${Math.random().toString(36).slice(2)}`,
-      });
+      diagrams.push({ el: container, code, id: `mermaid-${Date.now()}-${i}` });
     });
+    render();
   }
 
-  function init() {
-    collect();
-    renderAll();
+  // Первичная инициализация (модульный скрипт выполняется после парсинга DOM).
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup, { once: true });
+  } else {
+    setup();
   }
 
-  if (document.readyState !== 'loading') init();
-  else document.addEventListener('DOMContentLoaded', init);
+  // Навигация при включённых view-transitions.
+  document.addEventListener('astro:page-load', setup);
 
-  // Поддержка переходов между страницами (если включён ClientRouter).
-  document.addEventListener('astro:page-load', init);
-
-  // Перерисовка при переключении светлой/тёмной темы.
+  // Перерисовка при переключении светлой/тёмной темы (без повторного collect).
   new MutationObserver((mutations) => {
-    if (mutations.some((m) => m.attributeName === 'data-theme')) renderAll();
+    if (mutations.some((m) => m.attributeName === 'data-theme')) render();
   }).observe(document.documentElement, { attributes: true });
 </script>

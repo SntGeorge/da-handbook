@@ -11,7 +11,8 @@
 ### Требования
 
 - **Node.js 20+** ([nodejs.org](https://nodejs.org) или через `nvm`)
-- **pnpm** (рекомендуется) или npm
+- **pnpm 11** — версия зафиксирована в `package.json` (`packageManager`), а одобрение
+  build-скриптов и настройки лежат в `pnpm-workspace.yaml`.
 
 Установить pnpm, если ещё нет:
 
@@ -150,33 +151,34 @@ import { Card, CardGrid, LinkCard, Tabs, TabItem, Steps, Badge, Aside } from '@a
 
 ---
 
-## 🚢 Деплой на Cloudflare Pages
+## 🚢 Деплой на Cloudflare
 
-1. **Создать репозиторий на GitHub** и запушить проект:
+Сайт задеплоен как **Cloudflare Worker со статическими ассетами** (Workers Static
+Assets) и обновляется автоматически при `git push` в `main`.
 
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/USERNAME/data-analyst-handbook.git
-   git push -u origin main
-   ```
+- Конфигурация деплоя — в [`wrangler.jsonc`](./wrangler.jsonc): раздаёт папку `dist/`
+  как статику, серверного воркера нет.
+- Команда сборки на стороне Cloudflare: `pnpm build` (= `astro check && astro build`).
+- Версия pnpm берётся из поля `packageManager` в `package.json` (важно: на дефолтном
+  pnpm 10 сборка падает на `pnpm-workspace.yaml`).
 
-2. **Зайти в [Cloudflare Pages](https://dash.cloudflare.com/)** → Pages → Create application → Connect to Git → выбрать репозиторий.
+Подключение нового проекта (один раз): в [dash.cloudflare.com](https://dash.cloudflare.com/)
+→ **Workers & Pages** → Import a repository → выбрать репозиторий. Сборка и `wrangler.jsonc`
+подхватятся автоматически.
 
-3. **Настройки сборки:**
-   - Framework preset: **Astro**
-   - Build command: `pnpm build`
-   - Build output directory: `dist`
-   - Node version: `20`
-   - (Environment variables: `NODE_VERSION=20`)
+**Опционально:**
+- Кастомный домен — в настройках Worker → Domains & Routes.
+- Cloudflare Web Analytics — раскомментировать блок в `astro.config.mjs` и подставить токен.
 
-4. **Deploy.** После первого деплоя сайт будет на `https://da-handbook.pages.dev` (или своё имя проекта).
+### Безопасность
 
-5. **Опционально**: подключить кастомный домен в Custom domains.
-
-6. **Опционально**: включить Cloudflare Web Analytics — раскомментировать соответствующий блок в `astro.config.mjs` и подставить токен.
+- HTTP-заголовки безопасности (`X-Content-Type-Options`, `X-Frame-Options`,
+  `Referrer-Policy`, `Permissions-Policy`, HSTS) заданы в [`public/_headers`](./public/_headers).
+- DDoS-защита и WAF — на стороне Cloudflare (включается в дашборде, отдельного кода не требует).
+- Секреты (`.env*`, `.dev.vars`, ключи) перечислены в `.gitignore` и в репозиторий не попадают.
+- Сайт статический: нет бэкенда, БД и пользовательского ввода — классов уязвимостей
+  вроде SQL-инъекций или серверного RCE на проде нет. Mermaid рендерится с
+  `securityLevel: 'strict'`.
 
 ---
 
@@ -202,10 +204,10 @@ pnpm lint:md      # Markdown lint
 | **MDX** | Markdown + JSX-компоненты |
 | **TypeScript** | Type-safety |
 | **Shiki / Expressive Code** | Подсветка SQL/Python |
-| **Mermaid** | Диаграммы прямо в Markdown |
+| **Mermaid** | Диаграммы прямо в Markdown (рендер на клиенте, ленивая загрузка) |
 | **KaTeX** | Математические формулы |
 | **Pagefind** | Поиск (встроен в Starlight) |
-| **Cloudflare Pages** | Хостинг (бесплатно, безлимит трафика) |
+| **Cloudflare Workers** | Хостинг статики (бесплатно, безлимит трафика) |
 
 ---
 
