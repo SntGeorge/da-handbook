@@ -123,8 +123,6 @@ Reason: `NOT IN (a, b)` expands to `<> a AND <> b`, and `<> NULL` = `NULL`, whic
 - A `NULL` in `NOT IN` nukes the result. In analytics this quietly eats data — check for it.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Customers who have a phone number.</summary>
 

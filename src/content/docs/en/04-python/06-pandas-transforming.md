@@ -93,8 +93,6 @@ df.pipe(add_tax, rate=0.2)                      # insert your function into the 
 | Add a column in a chain | `assign` |
 | Embed your function into a chain | `pipe` |
 
-## Practice tasks
-
 <details>
 <summary>1. Why is `df["net"] = df["amount"] * 0.95` better than a row loop?</summary>
 

@@ -67,8 +67,6 @@ It's computed at once for the whole range, no need to copy down. Often combined 
 
 For automation in Sheets, instead of VBA there's **Apps Script** in JavaScript: you can write functions, set triggers (e.g. refresh data on a schedule), send emails. Not required to know at the start — it's enough to know the capability exists.
 
-## Practice tasks
-
 <details>
 <summary>1. Need revenue by category with sorting — in one formula in Sheets. How?</summary>
 

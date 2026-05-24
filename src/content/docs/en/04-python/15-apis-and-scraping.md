@@ -72,8 +72,6 @@ For simple tables `pd.read_html(url)` is often enough — pandas finds the `<tab
 - **Look for an API first** — it's more legal, more stable and more convenient than parsing markup that changes.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. How to safely pass an API token into a request?</summary>
 

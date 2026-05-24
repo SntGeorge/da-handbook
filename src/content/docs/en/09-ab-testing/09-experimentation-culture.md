@@ -45,8 +45,6 @@ A normal experiment success rate is around 10–30%. This isn't poor work by the
 - Start with **quick visible wins** on an important metric, then scale the process.
 - Tie it to [product metrics](/en/08-product-analytics/10-product-frameworks/) and business goals, not "tests for tests' sake".
 
-## Practice tasks
-
 <details>
 <summary>1. Of 20 tests in a quarter only 4 "won". Is the team doing poorly?</summary>
 

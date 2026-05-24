@@ -44,8 +44,6 @@ This is a direct consequence of [multiple comparisons](/en/05-statistics/06-hypo
 
 If you do need to peek (to stop a harmful test early or lock in a clear win), use **sequential analysis** methods that correctly control the error under repeated checks: alpha-spending (O'Brien-Fleming), always-valid p-values, the [Bayesian approach](/en/05-statistics/09-bayesian-vs-frequentist/). They "pay" for the ability to peek with a slightly larger sample, but do it in a statistically honest way.
 
-## Practice tasks
-
 <details>
 <summary>1. On day three the p-value dropped below 0.05 for the first time. Stop and ship?</summary>
 

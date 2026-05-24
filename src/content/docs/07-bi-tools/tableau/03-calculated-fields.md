@@ -74,8 +74,6 @@ SUM([Sales]) - LOOKUP(SUM([Sales]), -1)
 | Пример | `[Sales]-[Cost]` | running total, % of total, rank |
 | Зависит от вида таблицы | нет | да (направление) |
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. Нужен нарастающий итог выручки по месяцам. Обычное поле или table calc?</summary>
 

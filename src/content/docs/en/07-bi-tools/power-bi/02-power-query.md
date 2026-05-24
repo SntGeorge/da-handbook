@@ -50,8 +50,6 @@ Two ways to combine queries (as in Excel and [SQL](/en/02-sql/11-set-operations/
 
 Merge — to pull in a reference; Append — to stack exports for different months.
 
-## Practice tasks
-
 <details>
 <summary>1. An amount column loaded as text, and measures compute wrong. Where to fix?</summary>
 

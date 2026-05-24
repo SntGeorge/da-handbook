@@ -54,8 +54,6 @@ At the end they almost always ask "do you have any questions". **No questions is
 
 It's both an impression of you and real information — whether the place suits you.
 
-## Practice tasks
-
 <details>
 <summary>1. "Tell me about your biggest failure." How to structure the answer?</summary>
 

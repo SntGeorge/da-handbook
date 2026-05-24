@@ -57,8 +57,6 @@ Use pre-attentive attributes sparingly: if everything is highlighted, nothing is
 - Minimal colors, a unified style, aligned elements.
 - A dashboard is for monitoring, not "everything at once on one screen".
 
-## Practice tasks
-
 <details>
 <summary>1. You need to precisely compare revenue across 8 departments. Pie or bars?</summary>
 

@@ -71,8 +71,6 @@ Revenue = SUMX(Sales, Sales[Qty] * Sales[Price])   -- first Qty*Price per row, t
 
 A plain `SUM(Sales[Qty]) * SUM(Sales[Price])` would give a wrong result — the iterator computes the product in each row.
 
-## Practice tasks
-
 <details>
 <summary>1. You need each category's share of total revenue. Which DAX construct?</summary>
 

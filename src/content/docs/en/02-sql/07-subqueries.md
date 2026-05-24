@@ -141,8 +141,6 @@ JOIN (
 
 Such a subquery in `FROM` is called a **derived table**. When you have many of them or they're nested — switch to [CTEs](/en/02-sql/08-cte/) (`WITH`); it reads far better.
 
-## Practice tasks
-
 <details>
 <summary>1. Customers whose total spend is higher than customer #2's.</summary>
 

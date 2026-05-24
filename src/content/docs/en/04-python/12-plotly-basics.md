@@ -65,8 +65,6 @@ Plotly — for interactive dashboards and presentations where data should be exp
 
 In a notebook `fig.show()` renders an interactive chart right below the cell. In VS Code it works out of the box; in classic Jupyter you sometimes need the `nbformat` package.
 
-## Practice tasks
-
 <details>
 <summary>1. You need a revenue-by-country chart split by status with tooltips. With what?</summary>
 

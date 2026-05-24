@@ -49,8 +49,6 @@ About 8% of men and 0.5% of women see colors poorly (most often red/green).
 - A single font and a couple of sizes (heading/label) — not a zoo of typefaces.
 - Numbers — preferably tabular (monospaced) figures, so columns align.
 
-## Practice tasks
-
 <details>
 <summary>1. You're showing profit and loss around zero. Which palette?</summary>
 

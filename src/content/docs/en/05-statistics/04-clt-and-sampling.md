@@ -57,8 +57,6 @@ If a sample is systematically unrepresentative, increasing $n$ only measures the
 
 A famous example — the 1936 poll by phone and car owners (then an attribute of the wealthy): a huge sample gave a confident but **wrong** election forecast.
 
-## Practice tasks
-
 <details>
 <summary>1. Income data is heavily skewed. Can you build a confidence interval for the mean?</summary>
 

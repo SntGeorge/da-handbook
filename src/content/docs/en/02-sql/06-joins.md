@@ -339,8 +339,6 @@ Anna's order 101 has 2 line items, so its `amount` (2500) was counted twice: `25
 | All combinations (calendar, grid) | `CROSS` |
 | Hierarchy within one table | `SELF` (`LEFT JOIN` on itself) |
 
-## Practice tasks
-
 Solve them on the demo schema above. The answer is under the spoiler, but write it yourself first.
 
 <details>

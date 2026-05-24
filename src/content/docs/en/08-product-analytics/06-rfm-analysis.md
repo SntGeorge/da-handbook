@@ -64,8 +64,6 @@ Then a segment is assigned by the `r, f, m` combination via `CASE`.
 
 RFM is the basis of CRM campaigns: "champions" — early access to new releases, "at-risk" — a win-back discount email, "lost" — a last reactivation or removal from paid ads. Budget goes where the return is higher, rather than being spread across the whole base.
 
-## Practice tasks
-
 <details>
 <summary>1. A customer: R=5, F=1, M=2. Which segment and what to do?</summary>
 

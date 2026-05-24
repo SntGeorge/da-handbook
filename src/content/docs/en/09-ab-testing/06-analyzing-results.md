@@ -43,8 +43,6 @@ Statistically significant ≠ important to the business:
 
 If a test has several metrics/segments, some "significances" will appear by chance. Apply a correction ([Bonferroni / Benjamini-Hochberg](/en/05-statistics/06-hypothesis-testing/)) or limit yourself to one primary metric in advance. A post-hoc "segment slice" is especially dangerous — you'll almost certainly find a "winning" segment by chance.
 
-## Practice tasks
-
 <details>
 <summary>1. A +0.1% effect at p=0.01 on a 5M sample. Ship the feature?</summary>
 

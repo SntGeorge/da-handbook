@@ -46,8 +46,6 @@ The **OEC (Overall Evaluation Criterion)** is a single success criterion for the
 If the primary is "clicks", the team will unwittingly optimize clickbait, harming the product. A good metric/OEC reflects real user value ([like the North Star](/en/08-product-analytics/10-product-frameworks/)), not a surrogate that's easy to game.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. "Let's test the new button and see which metrics rise." What's wrong?</summary>
 

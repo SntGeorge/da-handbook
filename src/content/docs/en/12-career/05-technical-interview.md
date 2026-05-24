@@ -64,8 +64,6 @@ In live coding they assess your **thought process**, not just the final code. Wh
 - Mention edge cases upfront — a sign of maturity.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Which SQL topic is almost guaranteed on a DA tech interview?</summary>
 

@@ -53,8 +53,6 @@ It helps compare different k and algorithms, but the final word is the **meaning
 
 Clustering by behavior (frequency, check, activity) yields segments that aren't obvious in advance. It's a machine complement to manual [RFM](/en/08-product-analytics/06-rfm-analysis/): RFM cuts by fixed rules, k-means finds groups from the data itself.
 
-## Practice tasks
-
 <details>
 <summary>1. How to choose the number of clusters k for k-means?</summary>
 

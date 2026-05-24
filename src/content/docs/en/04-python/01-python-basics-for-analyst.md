@@ -108,8 +108,6 @@ print(f"Share: {0.1234:.1%}")           # Share: 12.3%
 Two classic beginner mistakes: mixing tabs and spaces in indentation (Python complains with `IndentationError`) and confusing `=` (assignment) with `==` (comparison). In a condition it's always `==`.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. What does `[10, 20, 30, 40][1:3]` return?</summary>
 

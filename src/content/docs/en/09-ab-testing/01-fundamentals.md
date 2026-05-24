@@ -59,8 +59,6 @@ flowchart LR
 
 Each step is a separate page of this section.
 
-## Practice tasks
-
 <details>
 <summary>1. Why does an A/B test prove causation, while watching a metric before/after doesn't?</summary>
 

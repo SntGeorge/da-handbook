@@ -82,8 +82,6 @@ ts.tz_localize("UTC").tz_convert("Europe/Berlin")
 
 At the start time zones are rarely needed — but remember that "midnight" depends on the zone, and this affects daily metrics.
 
-## Practice tasks
-
 <details>
 <summary>1. How to get revenue by month from a table of daily orders?</summary>
 

@@ -93,8 +93,6 @@ primary.combine_first(backup)            # where primary is NaN, take from backu
 If the key in the right table isn't unique, each left row matches **several** right rows, and the row count grows (and sums double). Before `merge` check the key's uniqueness: `customers["customer_id"].is_unique`. This is the same trap as [row "fan-out" in SQL joins](/en/02-sql/06-joins/).
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. You need all orders, and if a customer has a name — pull it, otherwise NaN. Which how?</summary>
 

@@ -68,8 +68,6 @@ The time **between** Poisson events: how long to wait for the next order, time t
 Many tests (t-test) assume approximate normality, but real business data (incomes, durations) is often skewed. Check the shape with a histogram or a [normality test](/en/05-statistics/07-statistical-tests/) before choosing a method — otherwise conclusions will be wrong.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. What distribution does the number of purchases out of 5000 ad impressions follow?</summary>
 

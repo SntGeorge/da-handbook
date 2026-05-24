@@ -116,8 +116,6 @@ SELECT GREATEST(price, min_price) AS final_price FROM ...;
 Any arithmetic with `NULL` yields `NULL` (`100 + NULL = NULL`). If your data has gaps — wrap in `COALESCE(col, 0)` before computing, otherwise the metric "collapses" into `NULL`.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Put each order into an amount bucket and count how many in each.</summary>
 

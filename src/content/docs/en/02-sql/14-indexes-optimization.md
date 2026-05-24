@@ -86,8 +86,6 @@ What to read in a plan:
 Don't optimize blindly. First `EXPLAIN ANALYZE` → find the bottleneck (Seq Scan, expensive Sort, row blow-up) → then fix precisely (an index, rewrite a condition, drop `SELECT *`). "Premature optimization is the root of all evil."
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. A query filters by email but is slow. What to check?</summary>
 

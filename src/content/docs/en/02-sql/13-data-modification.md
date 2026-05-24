@@ -115,8 +115,6 @@ If something fails between the two `UPDATE`s — `ROLLBACK` restores everything,
 Before a mass change: `BEGIN;` → run the `UPDATE` → `SELECT` to verify the result → `COMMIT` (if good) or `ROLLBACK` (if not). That way a mistake doesn't become irreversible.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Grant a bonus of 300 to all customers from Kazakhstan.</summary>
 

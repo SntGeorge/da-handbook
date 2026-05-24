@@ -56,8 +56,6 @@ Money retention for subscriptions/B2B: how much **revenue** from a cohort remain
 
 Unlike user retention, NDR accounts for the fact that remaining customers can pay **more**.
 
-## Practice tasks
-
 <details>
 <summary>1. A product's retention curve stabilized at 18% after day 30. Is that good?</summary>
 

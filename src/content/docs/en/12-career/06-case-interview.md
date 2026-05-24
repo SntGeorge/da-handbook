@@ -57,8 +57,6 @@ flowchart TD
 
 "How to verify that a feature helps?". Walk through the [A/B](/en/09-ab-testing/02-hypothesis-design/) steps: hypothesis → primary + guardrail metrics → randomization unit → sample size/timeframe → how to analyze. Show that you remember the pitfalls (peeking, SRM).
 
-## Practice tasks
-
 <details>
 <summary>1. "Conversion to purchase dropped 10%." Is the first step to name a cause?</summary>
 

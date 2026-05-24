@@ -38,8 +38,6 @@ They provide privacy, access management (who sees which dashboards), extract ref
 
 Tableau dashboards can be embedded into web apps and portals (iframe or JavaScript API), so analytics lives inside the company's product. That's already an engineering task; for an analyst it's enough to know the capability exists and that access is managed by Server/Cloud.
 
-## Practice tasks
-
 <details>
 <summary>1. Where to publish a dashboard for a resume, and what to keep in mind?</summary>
 

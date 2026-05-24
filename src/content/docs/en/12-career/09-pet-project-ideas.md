@@ -66,8 +66,6 @@ Respect `robots.txt` and rate limits, don't publish personal data in a public re
 | Your music analysis | Python, storytelling |
 | Customer segmentation | ML basics, clustering |
 
-## Practice tasks
-
 <details>
 <summary>1. What turns "played with a dataset" into a strong pet project?</summary>
 

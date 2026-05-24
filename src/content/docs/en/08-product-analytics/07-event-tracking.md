@@ -56,8 +56,6 @@ A **tracking plan** is a document (usually a table) describing in advance: which
 - **Logging "everything"**: data exists, meaning doesn't; you pay to store noise.
 - **Changing an event's meaning after the fact** — breaks historical data.
 
-## Practice tasks
-
 <details>
 <summary>1. A developer suggests one event `click` with a "what was clicked" property. What's the problem?</summary>
 

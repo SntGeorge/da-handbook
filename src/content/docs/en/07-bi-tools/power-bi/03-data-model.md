@@ -45,8 +45,6 @@ A relationship filters in a direction, and by default — **from dimension to fa
 
 Technical fields (keys, service ids) are hidden from the user (Hide). Only meaningful fields stay in the report — the model is cleaner and doesn't mislead those building visuals.
 
-## Practice tasks
-
 <details>
 <summary>1. Which schema is recommended in Power BI and why?</summary>
 

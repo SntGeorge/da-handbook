@@ -82,8 +82,6 @@ for chunk in pd.read_csv("huge.csv", chunksize=100_000):
 | JSON | API responses, nested structures |
 | Parquet | large volumes, intermediate storage |
 
-## Practice tasks
-
 <details>
 <summary>1. A localized CSV opened as garbled text, and all data is in one column. What to check?</summary>
 

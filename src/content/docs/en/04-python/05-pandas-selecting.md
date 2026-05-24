@@ -82,8 +82,6 @@ df["amount"].where(df["amount"] > 2000)       # keeps >2000, rest → NaN
 df["amount"].mask(df["amount"] > 2000, 0)     # opposite: >2000 becomes 0
 ```
 
-## Practice tasks
-
 <details>
 <summary>1. How to select paid orders from Kazakhstan over 1000?</summary>
 

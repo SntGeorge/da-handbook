@@ -61,8 +61,6 @@ An ATS (Applicant Tracking System) is a robot that filters out resumes before a 
 - **Listing 30 technologies** you "heard of" — they'll ask, and it'll be embarrassing.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. How to rewrite "Made reports for the sales department" into a strong line?</summary>
 

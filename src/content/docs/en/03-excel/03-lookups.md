@@ -64,8 +64,6 @@ No fragile "column number", reads more clearly. If your Excel/Sheets version has
 | Need to search left | `XLOOKUP` or `INDEX/MATCH` (not `VLOOKUP`) |
 | Key not found — need a fallback | `XLOOKUP(..., "—")` or `IFERROR(...)` |
 
-## Practice tasks
-
 <details>
 <summary>1. Why can't `VLOOKUP` find a value to the left of the key?</summary>
 

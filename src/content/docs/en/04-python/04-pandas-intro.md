@@ -72,8 +72,6 @@ df["country"].value_counts()   # value frequencies
 
 `info()` immediately shows where there are missing values (by non-null count) and whether types "drifted" (a number read as text).
 
-## Practice tasks
-
 <details>
 <summary>1. What's the difference between Series and DataFrame?</summary>
 

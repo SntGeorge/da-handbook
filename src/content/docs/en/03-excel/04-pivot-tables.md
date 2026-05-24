@@ -61,8 +61,6 @@ If you need a metric that's not in the data (e.g. average check = sum / count), 
 
 A slicer is a button filter on top of the pivot: **Analyze → Insert Slicer**, pick a field (e.g. `country`), and filter the table by clicking. Handy for mini-dashboards; one slicer can be connected to several pivots.
 
-## Practice tasks
-
 <details>
 <summary>1. I want revenue with countries in rows and categories in columns. What goes where?</summary>
 

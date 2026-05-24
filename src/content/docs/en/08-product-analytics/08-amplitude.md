@@ -65,8 +65,6 @@ Amplitude is strong at ready-made product reports over events, but it's **not a 
 
 **The flow end to end:** the product logs events → Amplitude stitches them to users → you get funnels, retention and segments with clicks, without writing a line of SQL.
 
-## Practice tasks
-
 <details>
 <summary>1. You need to find which onboarding step users drop off at. Which report?</summary>
 

@@ -54,8 +54,6 @@ Linked to [unit economics](/en/08-product-analytics/02-unit-economics/) and the 
 
 The "north star" is the single metric that best reflects the product's value to the user: for Spotify — listening time, for a marketplace — the number of successful orders. Not revenue directly, but what generates it. Team goals are built around it.
 
-## Practice tasks
-
 <details>
 <summary>1. Stickiness (DAU/MAU) = 0.6. Good or bad?</summary>
 

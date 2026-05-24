@@ -75,8 +75,6 @@ A universal method: works for the median, percentiles and any complex metric.
 - Thinking 95% of the data lies in the CI — no, the CI is about the **parameter** (the mean), not individual values.
 - Comparing groups "by eye via CI overlap" instead of a [hypothesis test](/en/05-statistics/06-hypothesis-testing/) — overlap doesn't always mean the absence of a significant difference.
 
-## Practice tasks
-
 <details>
 <summary>1. "95% CI for the mean = [100, 120]". Is "the mean lies here with 95% probability" correct?</summary>
 

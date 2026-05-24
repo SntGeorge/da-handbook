@@ -67,8 +67,6 @@ Tier = SWITCH(TRUE(),
 
 `SWITCH(TRUE(), ...)` is a readable replacement for nested `IF` with several conditions.
 
-## Practice tasks
-
 <details>
 <summary>1. You need a "revenue" metric that recomputes under any report slice. Column or measure?</summary>
 

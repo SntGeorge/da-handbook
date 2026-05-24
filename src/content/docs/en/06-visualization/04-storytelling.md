@@ -56,8 +56,6 @@ A classic frame for an analysis report:
 
 This is the "Minto pyramid": conclusion first, details after for those who need them.
 
-## Practice tasks
-
 <details>
 <summary>1. A slide title: "Revenue dynamics by region". What's wrong with it?</summary>
 

@@ -62,8 +62,6 @@ A good analyst proposes ML only when rules genuinely fall short.
 
 An analyst lives in the left column, but the boundary is blurry: [regression](/en/10-ml-basics/03-linear-regression/) and [model evaluation](/en/10-ml-basics/08-model-evaluation/) are shared ground.
 
-## Practice tasks
-
 <details>
 <summary>1. You need to "find at-risk-of-churn customers". Is that immediately an ML task?</summary>
 

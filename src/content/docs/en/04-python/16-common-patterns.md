@@ -95,8 +95,6 @@ Statistical significance (`p < 0.05`) only says the difference is unlikely to be
 - **One chart — one thought**, labeled axes, a clear title.
 - **Reproducibility**: the notebook should run top to bottom (Restart & Run All).
 
-## Practice tasks
-
 <details>
 <summary>1. You're sent a CSV with "see what's interesting". Where to start?</summary>
 

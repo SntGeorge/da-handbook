@@ -52,8 +52,6 @@ flowchart TD
 
 You can see ~70% of the skills are shared. Switching specialization within analytics is far easier than entering the profession from scratch.
 
-## Practice tasks
-
 <details>
 <summary>1. A posting: "compute campaign payback, reconcile channel spend with revenue". Which analyst is this?</summary>
 

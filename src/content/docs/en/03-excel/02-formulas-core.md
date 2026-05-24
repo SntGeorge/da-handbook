@@ -81,8 +81,6 @@ In `SUMIFS`/`COUNTIFS` conditions you can write `">2000"`, `"<>paid"`, `"El*"` (
 | Branching logic | `IF` / `IFS` |
 | Multiple conditions in one `IF` | `AND` / `OR` |
 
-## Practice tasks
-
 <details>
 <summary>1. How to compute revenue only for paid orders from Kazakhstan?</summary>
 

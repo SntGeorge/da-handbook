@@ -58,8 +58,6 @@ By opening access to "anyone with the link", you make the data available to anyo
 | quick dashboard, link sharing | large volumes, RLS, on-premise |
 | work from any OS in the browser | advanced computations |
 
-## Practice tasks
-
 <details>
 <summary>1. You want the viewer to pick the period and region on the dashboard themselves. Filter or control?</summary>
 

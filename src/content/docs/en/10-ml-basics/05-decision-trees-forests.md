@@ -56,8 +56,6 @@ Three top boosting implementations:
 
 For a junior it's enough to know they're all gradient boosting, and the choice between them is nuances of speed and data type, not a fundamental difference.
 
-## Practice tasks
-
 <details>
 <summary>1. Why is a single deep tree a bad idea in practice?</summary>
 

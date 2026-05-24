@@ -46,8 +46,6 @@ When randomization is impossible ([fundamentals](/en/09-ab-testing/01-fundamenta
 
 Weaker than a true A/B (causation isn't guaranteed as strictly), but better than bare observation.
 
-## Practice tasks
-
 <details>
 <summary>1. Traffic is low, the test needs 8 weeks. Which method can shorten it without losing power?</summary>
 

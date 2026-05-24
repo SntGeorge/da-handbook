@@ -173,8 +173,6 @@ GROUP BY ROLLUP(country);
 `ROLLUP(a, b)` gives hierarchical subtotals (by `a,b`, by `a`, grand total). `CUBE(a, b)` — totals over **all** combinations. `GROUPING SETS (...)` — specify the slices you want manually. Handy for pivot reports "by country, by status and overall" in a single query.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Revenue and order count per customer (paid only).</summary>
 

@@ -59,8 +59,6 @@ GROUP BY f.cohort, period;
 
 **pandas** — `groupby` по когорте + `pivot_table` (готовый рецепт — в [типичных паттернах Python](/04-python/16-common-patterns/)).
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. В столбце «Месяц 1» retention растёт от старых когорт к новым: 40% → 45% → 50%. О чём это?</summary>
 

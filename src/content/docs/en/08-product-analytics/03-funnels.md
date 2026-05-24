@@ -53,8 +53,6 @@ End-to-end conversion = 430 / 10000 = **4.3%**.
 There's a temptation to optimize the payment step (it's closer to the money), but if its dropoff is 10% while "cart" is 70%, the potential is many times higher at the cart. Improving the bottleneck from 30% to 40% conversion gives more revenue than polishing an already-good step.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. End-to-end conversion dropped from 5% to 4%. Where to start the investigation?</summary>
 

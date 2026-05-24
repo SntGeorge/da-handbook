@@ -68,8 +68,6 @@ flowchart TD
 Postings often list 15 tools "comma-separated". That's a wishlist, not a requirement. The recruiter really checks SQL, case-based thinking and one BI. A deep core beats a shallow acquaintance with a dozen trendy things.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Which skill should you definitely learn first, whatever region you're searching in?</summary>
 

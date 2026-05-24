@@ -77,8 +77,6 @@ df_clean = df[mask]                # оставить «нормальные»
 df["country"] = df["country"].astype("category")
 ```
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. Столбец amount прочитался как текст из-за пробелов и «—». Как привести к числу?</summary>
 

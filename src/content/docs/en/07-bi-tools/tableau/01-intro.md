@@ -52,8 +52,6 @@ Tableau's main mental model:
 3. Go to a sheet (Sheet 1) — fields are already split into Dimensions/Measures.
 4. Drag fields onto the shelves — the chart builds itself.
 
-## Practice tasks
-
 <details>
 <summary>1. Which Tableau edition to take for a portfolio pet project?</summary>
 

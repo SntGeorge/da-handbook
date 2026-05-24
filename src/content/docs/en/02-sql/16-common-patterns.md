@@ -152,8 +152,6 @@ If the months are consecutive (1,2,3), the difference `mon - row_number` is the 
 Almost any "advanced" analytical task = a CTE (break into steps) + window functions (ranks/totals/neighbors) + dates (`DATE_TRUNC`). Master these three and you cover most real tasks.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Month-over-month revenue growth (% vs the previous month).</summary>
 

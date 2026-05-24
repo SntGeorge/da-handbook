@@ -63,8 +63,6 @@ Lasso is handy when you need to automatically drop useless features.
 - Strong **multicollinearity** without regularization.
 - Complex feature interactions a line can't capture.
 
-## Practice tasks
-
 <details>
 <summary>1. What's the value of linear regression for an analyst if there's accurate boosting?</summary>
 

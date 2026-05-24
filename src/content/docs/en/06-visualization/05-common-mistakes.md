@@ -55,8 +55,6 @@ Choosing a convenient time window to show the desired trend: "growth over the la
 | Period full and representative? | against cherry-picking |
 | Comparing shares where needed? | absolutes mislead |
 
-## Practice tasks
-
 <details>
 <summary>1. A bar chart: Y axis from 95 to 100, the difference "huge". What's the catch?</summary>
 

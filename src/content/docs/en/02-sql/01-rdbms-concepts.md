@@ -107,8 +107,6 @@ Three normal forms in plain terms:
 Normalized schemas are about **OLTP** (apps, many small operations). In analytics (**OLAP**) data is often **denormalized** into wide tables for read speed. More in the [Modern Stack](/en/11-modern-stack/) section.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Why shouldn't you store a customer's country in the orders table?</summary>
 

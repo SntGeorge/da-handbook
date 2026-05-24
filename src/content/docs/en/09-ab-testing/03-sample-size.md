@@ -57,8 +57,6 @@ If there isn't enough data for a reasonable timeframe:
 - **Reduce variance** with methods like [CUPED](/en/09-ab-testing/08-advanced-techniques/) — gives the same power on a smaller sample.
 - Raise the traffic share in the test (if you can allocate more to the experiment).
 
-## Practice tasks
-
 <details>
 <summary>1. You decide to catch a +0.5 pp effect instead of +1 pp. How does the needed sample change?</summary>
 

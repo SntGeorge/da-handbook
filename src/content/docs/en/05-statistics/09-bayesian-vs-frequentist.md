@@ -57,8 +57,6 @@ Instead of "significant/not significant", Bayesian A/B gives:
 
 This is more intuitive for decision-making. Many product platforms (e.g. for experimentation) build reports exactly this way. More on the practice — in [advanced A/B techniques](/en/09-ab-testing/08-advanced-techniques/).
 
-## Practice tasks
-
 <details>
 <summary>1. Why is a Bayesian A/B test's answer handier than a frequentist p-value for the business?</summary>
 

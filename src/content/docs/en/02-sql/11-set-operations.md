@@ -116,8 +116,6 @@ flowchart TB
 - `ORDER BY` is written **once** at the very end — it applies to the whole combined result, not to individual parts.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. All unique emails from both sources.</summary>
 

@@ -141,8 +141,6 @@ dbt models are SQL + the **Jinja** templating engine: you can substitute variabl
 A common misconception: dbt is neither a database nor a loader. It only **transforms** data already loaded into the DWH, generating and running SQL **in your warehouse**. Loading (E/L) is handled by other tools (Fivetran, Airbyte), orchestration — by [Airflow](/en/11-modern-stack/06-airflow-basics/).
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Why write `{{ ref('other_model') }}` in dbt models instead of the table name directly?</summary>
 

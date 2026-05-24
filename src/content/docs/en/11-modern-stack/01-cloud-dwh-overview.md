@@ -65,8 +65,6 @@ Why the move to ELT: cloud DWHs are cheap to store in and powerful at computing 
 
 A hybrid of a **data lake** (cheap raw-file storage) and a **DWH** (structure and SQL). The formats **Apache Iceberg** and **Delta Lake** add transactions, schema and versioning to files in the lake — the "best of both worlds". A trend of recent years; for a junior it's enough to know the term and idea.
 
-## Practice tasks
-
 <details>
 <summary>1. Why aren't heavy analytical reports run directly on the application's production DB?</summary>
 

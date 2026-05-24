@@ -55,8 +55,6 @@ flowchart LR
 
 Настраиваются: Dashboard → **Actions** → Add Action.
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. Фильтр по стране на дашборде не влияет на расчёт с FIXED. Почему и как исправить?</summary>
 

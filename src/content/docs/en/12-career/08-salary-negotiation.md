@@ -57,8 +57,6 @@ The strongest argument. That's why it's worth running [several processes in para
 - Justify: the market range, your skills/projects, another offer.
 - Ask specifically and with justification, stay polite. A refusal to improve ≠ rescinding the offer — the worst case is almost always "we'll leave it as is".
 
-## Practice tasks
-
 <details>
 <summary>1. At the HR screening they immediately ask for exact salary expectations. The best move?</summary>
 

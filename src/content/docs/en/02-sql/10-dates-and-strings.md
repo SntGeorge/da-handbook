@@ -126,8 +126,6 @@ FROM orders LIMIT 1;
 PostgreSQL has `~` (regex match) and `REGEXP_REPLACE`. Handy for complex cleaning: `REGEXP_REPLACE(phone, '\D', '', 'g')` strips everything but digits from a phone.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Number of events by week.</summary>
 

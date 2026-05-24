@@ -47,8 +47,6 @@ flowchart LR
 
 This order is the backbone of the whole section: first clean ([Power Query](/en/07-bi-tools/power-bi/02-power-query/)), then build the model and measures (DAX), then visualize.
 
-## Practice tasks
-
 <details>
 <summary>1. Can you develop Power BI reports on a Mac?</summary>
 

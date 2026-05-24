@@ -50,8 +50,6 @@ A write-up of your project as an article is a strong bonus: it shows [storytelli
 | Kaggle notebook | analysis with explanations |
 | Article | storytelling, a case write-up |
 
-## Practice tasks
-
 <details>
 <summary>1. What matters more in a GitHub project to a recruiter — the code or the README?</summary>
 

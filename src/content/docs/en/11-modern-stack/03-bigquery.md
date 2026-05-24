@@ -86,8 +86,6 @@ On-demand, you pay for **columns read**. `SELECT *` on a wide table scans all co
 
 An in-memory accelerator for dashboards: it caches data so BI tools (Looker Studio, etc.) return reports with sub-second latency. Useful when there are many interactive dashboards on top of BigQuery.
 
-## Practice tasks
-
 <details>
 <summary>1. Why is `SELECT *` an expensive habit in BigQuery?</summary>
 

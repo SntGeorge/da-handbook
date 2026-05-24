@@ -64,8 +64,6 @@ df.to_sql("results", engine, if_exists="append", index=False)
 
 `if_exists`: `fail` (по умолчанию, ошибка если таблица есть), `replace` (пересоздать), `append` (дописать).
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. Нужна выручка по странам из БД для графика. Тянуть всю таблицу в pandas?</summary>
 

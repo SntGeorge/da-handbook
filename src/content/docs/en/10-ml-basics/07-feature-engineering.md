@@ -48,8 +48,6 @@ The basic way to turn text into numbers for a model.
 
 Extra features add noise and overfitting risk. They're selected: by importance (feature importance from trees), via [L1 regularization](/en/10-ml-basics/03-linear-regression/) (Lasso zeroes out useless ones), by removing strongly correlated duplicates.
 
-## Practice tasks
-
 <details>
 <summary>1. A categorical feature "city" with 500 values. Is one-hot a good idea?</summary>
 

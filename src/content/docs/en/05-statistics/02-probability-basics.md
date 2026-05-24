@@ -56,8 +56,6 @@ Three doors, a prize behind one. You pick a door, the host opens one of the othe
 
 Why: initially your door wins with $\frac{1}{3}$, and "the other doors together" with $\frac{2}{3}$. By opening an empty one, the host concentrated that $\frac{2}{3}$ on the single remaining door. Again it's about conditional probability and accounting for new information.
 
-## Practice tasks
-
 <details>
 <summary>1. A disease test is 99% accurate, the disease affects 1% of people. The test is positive — is the patient almost certainly sick?</summary>
 

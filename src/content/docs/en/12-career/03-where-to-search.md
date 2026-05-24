@@ -44,8 +44,6 @@ External recruiters and agencies sometimes reach out to candidates themselves (e
 
 The search is a funnel: applications → screenings → interviews → offers. Rejections at each step are normal (recall [funnels and conversion](/en/08-product-analytics/03-funnels/)). Track your conversion: many applications and zero screenings — the problem is the [resume](/en/12-career/01-resume/); reaching the tech interview and failing — improve your [preparation](/en/12-career/05-technical-interview/).
 
-## Practice tasks
-
 <details>
 <summary>1. You're job-hunting abroad. Which channel is the priority and why?</summary>
 

@@ -64,8 +64,6 @@ df.to_sql("results", engine, if_exists="append", index=False)
 
 `if_exists`: `fail` (default, errors if the table exists), `replace` (recreate), `append` (add).
 
-## Practice tasks
-
 <details>
 <summary>1. You need revenue by country from the DB for a chart. Pull the whole table into pandas?</summary>
 

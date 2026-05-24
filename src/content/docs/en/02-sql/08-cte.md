@@ -138,8 +138,6 @@ A recursive CTE must have a stop condition (`WHERE n < 5`). Without it, the quer
 PostgreSQL CTEs used to be an "optimization fence" (always materialized). Since version 12, simple CTEs can be inlined like subqueries. In most analytical queries the difference isn't critical — choose for readability.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Via a CTE: customers with revenue above the per-customer average.</summary>
 

@@ -94,8 +94,6 @@ If a pipeline was added later or sat idle, **backfill** runs the DAG retroactive
 
 Airflow is the standard, but there are modern competitors: **Prefect** and **Dagster** — more convenient for development and testing, with a more "Pythonic" API. The idea is the same for all (pipeline orchestration); knowing they exist is useful, but Airflow is still the most common.
 
-## Practice tasks
-
 <details>
 <summary>1. Does Airflow process data itself?</summary>
 

@@ -56,8 +56,6 @@ The future boss assesses "fit or not", discusses the team's tasks. Often the fin
 
 The whole process usually takes **2–5 weeks** (longer at large companies). Between stages — days to weeks. That's normal; keep several processes in parallel, so you don't depend on one and have leverage in negotiation.
 
-## Practice tasks
-
 <details>
 <summary>1. They ask you to build a working dashboard on real company data, ~15 hours, unpaid, as a take-home. Normal?</summary>
 

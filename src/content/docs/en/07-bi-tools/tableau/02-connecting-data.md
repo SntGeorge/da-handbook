@@ -54,8 +54,6 @@ Blending links **two separate sources** at the aggregate level (not rows). Used 
 | Need explicit control of the join type | Join |
 | Data from different sources | Blending |
 
-## Practice tasks
-
 <details>
 <summary>1. The dashboard lags on a live connection to a loaded DB. What to do?</summary>
 

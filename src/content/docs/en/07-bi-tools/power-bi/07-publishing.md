@@ -47,8 +47,6 @@ Roles are created in Desktop (Manage roles), and users are assigned in Service. 
 
 You can share by: adding to a workspace, publishing an app, sending a link (share) or embedding. For most internal scenarios the right path is an **app** with configured permissions, not mailing out `.pbix` files.
 
-## Practice tasks
-
 <details>
 <summary>1. A scheduled refresh of a report from a local PostgreSQL fails. Why?</summary>
 

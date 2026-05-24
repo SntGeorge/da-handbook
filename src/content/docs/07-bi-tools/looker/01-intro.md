@@ -41,8 +41,6 @@ Tableau Public и Power BI хороши, но Looker Studio выигрывает
 
 Логика та же «измерение × мера», что в [Tableau](/07-bi-tools/tableau/01-intro/) и [Power BI](/07-bi-tools/power-bi/01-intro/).
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. В вакансии написано «Looker». Это про бесплатный инструмент?</summary>
 

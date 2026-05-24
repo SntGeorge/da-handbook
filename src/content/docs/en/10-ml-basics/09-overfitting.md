@@ -60,8 +60,6 @@ Plots of train and validation error against data volume / model complexity:
 If a feature accidentally includes information unavailable at prediction time (the future, something derived from the target, or statistics computed over all data including test), the model shows brilliant test quality and fails in reality. Examples: target encoding over all data, a "deal close date" feature when predicting closing. Prepare features strictly on train and think about what's actually known at prediction time.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Train accuracy 99%, test 70%. Diagnosis and what to do?</summary>
 

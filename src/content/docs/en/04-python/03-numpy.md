@@ -79,8 +79,6 @@ a.std()                 # standard deviation
 Pure NumPy is rarely needed — for matrix computations, ML features, numeric operations. For tabular data (with columns and names) use pandas: it's more convenient and built on top of NumPy.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. How does `[1,2,3] * 2` differ from `np.array([1,2,3]) * 2`?</summary>
 

@@ -69,8 +69,6 @@ A fact references `customer_sk` (the surrogate key of the specific version), so 
 
 In dimensions, instead of a "natural" business key (email, SKU) a **surrogate** key is introduced — a technical id (1, 2, 3…). Why: business keys change and aren't unique over time (especially with SCD Type 2, where one customer has several version rows), while a surrogate is stable and compact for joins.
 
-## Practice tasks
-
 <details>
 <summary>1. Where do "orders" go and where does the "customer reference" go in a star schema?</summary>
 

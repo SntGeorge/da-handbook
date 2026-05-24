@@ -49,8 +49,6 @@ In unsupervised you can't compute accuracy — there's nothing to compare with. 
 - **Semi-supervised** — only part of the data is labeled (labeling is expensive). The model uses both labels and the structure of the unlabeled. A compromise between the two worlds.
 - **Reinforcement learning** — an agent learns via **rewards** for actions (games, robotics, dynamic pricing). Rare in an analyst's work; it's enough to know it's a separate "learning by trial and reward" paradigm.
 
-## Practice tasks
-
 <details>
 <summary>1. You have customer history labeled "left/stayed" — you need to predict churn for new ones. Supervised or not?</summary>
 

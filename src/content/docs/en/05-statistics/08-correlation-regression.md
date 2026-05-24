@@ -74,8 +74,6 @@ $R^2 \in [0, 1]$ — the share of $y$'s variance explained by the model. $R^2 = 
 
 When there are several predictors: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots$ Each $\beta_i$ is the effect of its factor **all else being equal**. It helps separate variables' contributions but requires caution with correlated predictors (multicollinearity).
 
-## Practice tasks
-
 <details>
 <summary>1. The number of firefighters at a fire correlates strongly with the damage. So firefighters cause harm?</summary>
 

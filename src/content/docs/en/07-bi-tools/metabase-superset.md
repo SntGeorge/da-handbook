@@ -58,8 +58,6 @@ At minimum: a Docker container, a database for metadata, access to data sources,
 - Metabase — when you need simple self-service for non-technical colleagues.
 - Superset — when the team is strong in SQL and needs flexibility on big data.
 
-## Practice tasks
-
 <details>
 <summary>1. A startup needs a free BI where managers view data themselves almost without SQL. What to suggest?</summary>
 

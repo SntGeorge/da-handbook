@@ -50,8 +50,6 @@ Tableau lets you set a separate layout for phone/tablet (Device Preview). A dash
 - Use **context filters** to cut the volume down to the main computations.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Tiled or floating for a dashboard's main layout?</summary>
 

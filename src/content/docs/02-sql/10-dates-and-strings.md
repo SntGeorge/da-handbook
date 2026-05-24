@@ -126,8 +126,6 @@ FROM orders LIMIT 1;
 В PostgreSQL есть `~` (совпадение по regex) и `REGEXP_REPLACE`. Удобно для сложной чистки: `REGEXP_REPLACE(phone, '\D', '', 'g')` уберёт из телефона всё, кроме цифр.
 :::
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. Количество событий по неделям.</summary>
 

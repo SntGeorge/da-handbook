@@ -63,8 +63,6 @@ Task: on a chart of orders by day, show which customers spent more than 10,000 i
 
 You can drop this flag field into a filter — and the daily chart keeps only the "large" customers in full.
 
-## Practice tasks
-
 <details>
 <summary>1. The chart shows sales by day, but you need each day's share of the customer's total revenue. With what?</summary>
 

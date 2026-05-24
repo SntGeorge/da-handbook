@@ -158,8 +158,6 @@ WHERE rn = 1;
 Window functions can't be used in `WHERE` (they're computed after filtering). So a filter by rank is moved into a CTE/subquery and filtered from outside — as above with `WHERE rn = 1`.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Each order's share of its customer's revenue (in percent).</summary>
 

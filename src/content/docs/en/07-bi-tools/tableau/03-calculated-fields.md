@@ -74,8 +74,6 @@ This is the analog of [SQL window functions](/en/02-sql/09-window-functions/): t
 | Example | `[Sales]-[Cost]` | running total, % of total, rank |
 | Depends on the table layout | no | yes (direction) |
 
-## Practice tasks
-
 <details>
 <summary>1. You need a cumulative revenue total by month. Regular field or table calc?</summary>
 

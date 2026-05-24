@@ -71,8 +71,6 @@ Endlessly watching courses and never doing a single project. Theory without prac
 4–6 months is at ~10–15 hours a week from scratch. With a background (Excel, programming, math) you'll clear some phases faster. Don't chase the calendar — chase actually solving problems.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Why do A/B tests come after statistics, not before?</summary>
 

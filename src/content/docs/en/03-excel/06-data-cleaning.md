@@ -53,8 +53,6 @@ Combining `MID` and `FIND`, you extract parts by a delimiter:
 `FIND` is case-sensitive and doesn't understand wildcards; `SEARCH` is the opposite (ignores case, understands `*`/`?`). For most cleaning tasks `SEARCH` is more convenient.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. VLOOKUP can't find "Moscow" even though it's definitely in the reference. What's wrong?</summary>
 

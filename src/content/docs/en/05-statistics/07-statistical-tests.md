@@ -86,8 +86,6 @@ The nonparametric analog is Kruskal-Wallis.
 Comparing 4 groups across all pairs (6 tests) at $\alpha=0.05$ inflates the chance of a false find. Use ANOVA, and only on a significant result — pairwise comparisons with a correction (e.g. Tukey HSD).
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. You compare time on site (heavily skewed) across two groups. t-test or not?</summary>
 

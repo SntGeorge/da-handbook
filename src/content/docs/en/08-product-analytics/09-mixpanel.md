@@ -58,8 +58,6 @@ In an interview they don't ask "where's which button in Mixpanel". What matters 
 - **Amplitude** — when deep behavioral analytics and complex cohorts matter.
 - In practice the company makes the choice; the analyst adapts. There's no fundamental difference for a junior.
 
-## Practice tasks
-
 <details>
 <summary>1. You know Amplitude, at work it turned out to be Mixpanel. How much of a problem is it?</summary>
 

@@ -77,8 +77,6 @@ For columns with repeating values (country, status) the `category` type saves me
 df["country"] = df["country"].astype("category")
 ```
 
-## Practice tasks
-
 <details>
 <summary>1. The amount column read as text because of spaces and "—". How to convert to a number?</summary>
 

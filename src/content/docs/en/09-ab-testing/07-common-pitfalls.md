@@ -48,8 +48,6 @@ In social networks/marketplaces groups affect each other, and a regular A/B is [
 
 Analyzing only "survivors" distorts the conclusion: e.g. measuring engagement only among active users, ignoring those who left because of the change. Related to [sampling bias](/en/05-statistics/04-clt-and-sampling/).
 
-## Practice tasks
-
 <details>
 <summary>1. Planned 50/50, got 53/47 on a 1M sample. Chance?</summary>
 

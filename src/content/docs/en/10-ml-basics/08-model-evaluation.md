@@ -52,8 +52,6 @@ Between precision and recall there's a trade-off regulated by the [threshold](/e
 Quality on train is inflated — the model "saw" it. Split into train/test, or more reliably — **k-fold cross-validation**: split data into k parts, train on k−1 and validate on the rest in turn, then average. For imbalanced classes — **stratified**, for time series — **time series split** (you can't train on the future and validate on the past).
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. A fraud-detection model: 99% accuracy, but it barely catches fraudsters. How?</summary>
 

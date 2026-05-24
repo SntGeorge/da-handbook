@@ -156,8 +156,6 @@ It's an OLAP engine: brilliant at reads and batch inserts, but **pointwise UPDAT
 
 **The flow end to end:** events stream in batches into a MergeTree table, get sorted and partitioned, MVs compute pre-aggregates — and the dashboard gets an answer over billions of rows in a fraction of a second.
 
-## Practice tasks
-
 <details>
 <summary>1. A script does 50,000 single-row INSERTs into ClickHouse and everything lags. What's wrong?</summary>
 

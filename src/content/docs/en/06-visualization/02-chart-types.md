@@ -64,8 +64,6 @@ flowchart TD
     Q -->|Part of a whole| Part["stacked bar (pie — rarely)"]
 ```
 
-## Practice tasks
-
 <details>
 <summary>1. You need to show how revenue changed by month over 2 years. Which chart?</summary>
 

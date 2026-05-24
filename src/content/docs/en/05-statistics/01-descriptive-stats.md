@@ -79,8 +79,6 @@ sns.boxplot(data=df, x="status", y="amount")
 
 Handy for comparing spread between groups and catching anomalies — see [visualization](/en/06-visualization/02-chart-types/).
 
-## Practice tasks
-
 <details>
 <summary>1. A report says "average check $5000", but most pay ~$1500. How?</summary>
 

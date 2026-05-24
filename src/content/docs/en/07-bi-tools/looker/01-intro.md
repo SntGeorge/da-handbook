@@ -41,8 +41,6 @@ Dozens of connectors, but the Google ecosystem is the strongest:
 
 The logic is the same "dimension × measure" as in [Tableau](/en/07-bi-tools/tableau/01-intro/) and [Power BI](/en/07-bi-tools/power-bi/01-intro/).
 
-## Practice tasks
-
 <details>
 <summary>1. A posting says "Looker". Is it about the free tool?</summary>
 

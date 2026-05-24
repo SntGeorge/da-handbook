@@ -100,8 +100,6 @@ A cloud warehouse with separated storage and compute. SQL is close to the standa
 `SELECT`, `WHERE`, `JOIN`, `GROUP BY`, `HAVING`, window functions, CTEs — nearly identical everywhere. What usually needs rewriting: date/string functions, casting, top-level syntax (`LIMIT` vs `TOP`), specific aggregates. Learn the standard core — dialect trivia is a one-minute google away.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Why is ClickHouse faster than PostgreSQL on "SUM over a billion rows" but slower on "fetch one order by id"?</summary>
 

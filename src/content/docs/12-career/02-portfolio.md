@@ -50,8 +50,6 @@ sidebar:
 | Kaggle notebook | анализ с пояснениями |
 | Статья | storytelling, разбор кейса |
 
-## Задачи для самопроверки
-
 <details>
 <summary>1. Что важнее в GitHub-проекте для рекрутера — код или README?</summary>
 

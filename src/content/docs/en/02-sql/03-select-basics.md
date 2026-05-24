@@ -153,8 +153,6 @@ Two consequences:
 - In `WHERE` you **cannot** use an alias from `SELECT` — it doesn't exist yet at filtering time. `WHERE vat > 100` fails; you need `WHERE amount * 0.2 > 100`.
 - In `ORDER BY` the alias **is** allowed — sorting happens after `SELECT`.
 
-## Practice tasks
-
 <details>
 <summary>1. Output the names and countries of customers not from Russia, alphabetically.</summary>
 

@@ -60,8 +60,6 @@ At a small company one person does everything. At a large one the roles are clea
 
 The gap between Junior and Middle isn't SQL syntax — it's **autonomy**: a middle turns a vague "look into churn" into a concrete analysis plan on their own.
 
-## Practice tasks
-
 <details>
 <summary>1. How does a Data Analyst differ from a Data Scientist?</summary>
 

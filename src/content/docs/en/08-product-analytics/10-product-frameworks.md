@@ -60,8 +60,6 @@ OKRs (Objectives & Key Results) link a goal with measurable results based on met
 | Set a single focus for the team | North Star |
 | Set measurable goals | OKRs on metrics |
 
-## Practice tasks
-
 <details>
 <summary>1. Why is revenue a poor choice for a North Star Metric?</summary>
 

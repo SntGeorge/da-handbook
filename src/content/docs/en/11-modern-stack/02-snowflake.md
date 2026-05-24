@@ -115,8 +115,6 @@ QUALIFY rn = 1;     -- the top-1 order per customer
 Billing is in **credits** for warehouse running time (not the number of queries). A forgotten large warehouse that didn't "sleep" burns money for nothing. Basic optimization: enable auto-suspend, size for the task (not 4XL for a tiny query), don't scan the excess. An analyst writing inefficient queries on a huge warehouse costs the company dearly.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Is a "warehouse" in Snowflake where data is stored?</summary>
 

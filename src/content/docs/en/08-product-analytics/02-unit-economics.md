@@ -60,8 +60,6 @@ A subscription service:
 
 Conclusion: the unit is profitable, pays back in ~3 months — acquisition can be scaled.
 
-## Practice tasks
-
 <details>
 <summary>1. Revenue per customer $100, margin 20%, CAC $15. Is the unit profitable?</summary>
 

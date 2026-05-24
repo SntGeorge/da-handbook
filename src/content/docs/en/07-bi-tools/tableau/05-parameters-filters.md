@@ -55,8 +55,6 @@ They make a dashboard alive — interaction between sheets:
 
 Configured: Dashboard → **Actions** → Add Action.
 
-## Practice tasks
-
 <details>
 <summary>1. A country filter on the dashboard doesn't affect a FIXED computation. Why and how to fix?</summary>
 

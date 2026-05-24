@@ -59,8 +59,6 @@ GROUP BY f.cohort, period;
 
 **pandas** — `groupby` by cohort + `pivot_table` (a ready recipe — in [Python common patterns](/en/04-python/16-common-patterns/)).
 
-## Practice tasks
-
 <details>
 <summary>1. In the "Month 1" column retention grows from old cohorts to new: 40% → 45% → 50%. What does it mean?</summary>
 

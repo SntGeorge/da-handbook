@@ -83,8 +83,6 @@ A separate Python library for deeper and more flexible checks ("expectations"): 
 Platforms like **Monte Carlo**, Soda, Bigeye monitor data continuously and **automatically** flag anomalies: a table didn't update on time (freshness), the row count spiked, the schema changed, the distribution drifted. Unlike predefined tests, observability catches even what you didn't anticipate. The mature level of data quality.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. Which two tests on the primary key catch the most common join problem?</summary>
 

@@ -40,8 +40,6 @@ A powerful Power BI feature: color/icons/bars by value. For example, color negat
 
 **Bookmarks** save the report's state (filters, visual visibility). Navigation and interactivity are built on them: view-switching buttons, filter reset, step-by-step reveals. A common technique for "app-like" dashboards.
 
-## Practice tasks
-
 <details>
 <summary>1. You want a mini-dashboard to pop up when hovering over a country. What to use?</summary>
 

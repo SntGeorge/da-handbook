@@ -83,8 +83,6 @@ sns.set_theme(style="whitegrid")     # a tidy Seaborn theme at once
 plt.style.use("ggplot")              # built-in matplotlib styles
 ```
 
-## Practice tasks
-
 <details>
 <summary>1. You need a quick look at the distribution of order amounts. What to plot?</summary>
 

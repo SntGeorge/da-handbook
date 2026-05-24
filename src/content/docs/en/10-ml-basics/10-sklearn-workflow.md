@@ -90,8 +90,6 @@ model = joblib.load("model.pkl")                  # load
 
 Save the **whole Pipeline**, not just the model — then the preprocessing travels with it, and there's no mismatch in production.
 
-## Practice tasks
-
 <details>
 <summary>1. Why put preprocessing in a Pipeline rather than scaling the data beforehand?</summary>
 

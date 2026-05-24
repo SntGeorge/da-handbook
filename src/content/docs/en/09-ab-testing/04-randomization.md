@@ -43,8 +43,6 @@ To split important segments evenly, you split **within strata** (platform, count
 - **During/after** — check that the group shares match the design (50/50). A sharp divergence is [SRM](/en/09-ab-testing/07-common-pitfalls/), a sign of a split bug.
 - Verify that the distribution of key attributes (platform, geo) is similar across groups.
 
-## Practice tasks
-
 <details>
 <summary>1. Why do people usually randomize by user, not by session?</summary>
 

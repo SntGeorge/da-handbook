@@ -108,8 +108,6 @@ pd.crosstab(df["country"], df["status"])     # orders of each status by country
 If the key column has missing values (`NaN`), `groupby` excludes those rows from the result by default. Check `df["country"].isna().sum()` before grouping or use `dropna=False`.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. How to add each row's share of its country's revenue?</summary>
 

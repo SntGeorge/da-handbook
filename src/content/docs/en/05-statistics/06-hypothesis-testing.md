@@ -76,8 +76,6 @@ At $\alpha = 0.05$, every 20th test gives false significance even with no real e
 - **Benjamini-Hochberg (BH)** — controls the false discovery rate, gentler and more practical with many tests.
 :::
 
-## Practice tasks
-
 <details>
 <summary>1. A test gave a p-value of 0.03. Does it mean the error probability is 3%, or that the effect is large?</summary>
 

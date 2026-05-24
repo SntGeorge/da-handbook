@@ -51,8 +51,6 @@ pred = (proba > 0.3).astype(int)             # a custom threshold
 
 For **more than two** classes there's a multiclass variant (multinomial / softmax): the model predicts probabilities across all classes, and the most likely is chosen. The binary case is a special case.
 
-## Practice tasks
-
 <details>
 <summary>1. Why "regression" if the task is classification?</summary>
 
