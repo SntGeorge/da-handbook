@@ -123,7 +123,7 @@
   border-right: 1px solid var(--sl-color-hairline);
 }
 
-/* Активный пункт sidebar — оранжевая полоска */
+/* Активный пункт sidebar — оранжевая полоска + жирный контрастный текст */
 .sidebar a[aria-current='page'] {
   background: linear-gradient(
     90deg,
@@ -131,7 +131,16 @@
     transparent 100%
   );
   border-left: 2px solid var(--sl-color-accent);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+/* Текст активного пункта — максимальный контраст к подсветке (а не оранжевый) */
+:root[data-theme='dark'] .sidebar a[aria-current='page'] {
+  color: #ffffff;
+}
+
+:root[data-theme='light'] .sidebar a[aria-current='page'] {
+  color: #1c1917;
 }
 
 /* === БЕЙДЖИ === */
@@ -227,7 +236,9 @@
 .mermaid-diagram {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 1.5rem 0;
+  min-height: 4rem;
 }
 
 .mermaid-diagram svg {
@@ -235,7 +246,15 @@
   height: auto;
 }
 
-/* Пока скрипт не отработал — прячем сырой текст диаграммы, чтобы не мелькал */
+/* Плейсхолдер, пока svg ещё не вставлен (на первой загрузке грузится mermaid) */
+.mermaid-diagram:empty::after {
+  content: 'Рисуем диаграмму…';
+  color: var(--sl-color-text);
+  opacity: 0.5;
+  font-size: 0.85rem;
+}
+
+/* Пока скрипт не заменил <pre> на контейнер — не мигаем сырым текстом */
 pre.mermaid {
   visibility: hidden;
 }
@@ -243,4 +262,18 @@ pre.mermaid {
 .mermaid-error {
   visibility: visible;
   color: var(--sl-color-text);
+}
+
+/* === ШАПКА: длинный заголовок на мобильных === */
+@media (max-width: 50rem) {
+  a.site-title {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 24rem) {
+  a.site-title {
+    font-size: 0.8125rem;
+  }
 }
