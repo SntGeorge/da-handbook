@@ -9,6 +9,13 @@ sidebar:
 A new column is almost always computed **vectorized**: `df["net"] = df["amount"] * 0.95` — fast and readable. `apply` is needed only for complex logic, `map` — for replacing values by a dict, `assign`/`pipe` — for tidy transformation chains.
 :::
 
+:::note[Data flow]
+Input: existing DataFrame columns
+→ Processing: vectorized arithmetic / `map` / `apply` produce new values
+→ Output: a DataFrame with new or changed columns.
+Why: compute the metrics you need (margin, category, flag) that aren't in the raw data.
+:::
+
 ## Why you need it
 
 Raw data rarely contains the metric you need directly: you have to compute tax, categorize amounts, convert currency. That's transformations — creating and changing columns.

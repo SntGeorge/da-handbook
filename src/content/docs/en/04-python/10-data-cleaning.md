@@ -9,6 +9,13 @@ sidebar:
 Before analysis you must clean the data: deal with **missing values** (`isna`, `fillna`, `dropna`), remove **duplicates** (`drop_duplicates`), cast **types** (`astype`, `to_numeric`) and decide what to do with **outliers**. On dirty data any conclusions are unreliable.
 :::
 
+:::note[Data flow]
+Input: a raw "dirty" export (missing values, duplicates, numbers-as-text)
+→ Processing: `fillna`/`dropna`, `drop_duplicates`, `to_numeric`, outlier handling
+→ Output: a clean DataFrame ready for analysis.
+Why: ensure conclusions rest on correct data, not garbage.
+:::
+
 ## Why you need it
 
 Real exports are always dirty: empty cells, duplicate rows, a number stored as text, typos in categories. Cleaning is a mandatory stage; it takes up to half the analysis time, and that's normal.

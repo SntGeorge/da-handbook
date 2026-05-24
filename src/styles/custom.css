@@ -439,3 +439,16 @@ html[data-has-hero] .site-title span {
     filter: drop-shadow(0 10px 28px rgba(249, 115, 22, 0.3));
   }
 }
+
+/* === Блоки самопроверки <details>: отступ и тонкий разделитель ===
+   Заголовок «Задачи для самопроверки» убран, поэтому добавляем воздух и тонкую
+   линию перед первым выпадающим блоком, чтобы он не «лип» к предыдущему абзацу.
+   Скоплено в .sl-markdown-content — оглавление (TOC) не затрагивается. */
+.sl-markdown-content details {
+  margin-top: 0.75rem;
+}
+.sl-markdown-content :not(details) + details {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sl-color-hairline);
+}

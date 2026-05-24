@@ -9,6 +9,13 @@ sidebar:
 First convert the column to a date with **`to_datetime`** — then time operations unlock: **`resample`** (aggregate by day/week/month), **`rolling`** (moving average), **`shift`/`diff`** (compare to the prior period). This is the basis of "by month" and "growth over previous" reports.
 :::
 
+:::note[Data flow]
+Input: daily rows with a date and a value
+→ Processing: `to_datetime` → `resample`/`rolling`/`shift` roll it up by period
+→ Output: a "by month" series, moving averages, growth over the prior period.
+Why: see the dynamics and trend instead of a raw event stream.
+:::
+
 ## Why you need it
 
 Time-based analytics is everyday work: revenue by week, MAU by month, growth over the prior period, smoothing noise with a moving average. pandas does it in a couple of methods — but only if dates are real dates, not strings.

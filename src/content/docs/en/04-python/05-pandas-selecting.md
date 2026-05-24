@@ -9,6 +9,13 @@ sidebar:
 Two access methods: **`loc`** — by labels (column names, index values), **`iloc`** — by integer positions. Filtering — via **boolean masks** (`df[df["amount"] > 2000]`) or the convenient **`query()`** in SQL-like style.
 :::
 
+:::note[Data flow]
+Input: a DataFrame with all rows and columns
+→ Processing: a boolean mask / `loc` / `query` select the needed rows and columns
+→ Output: a subset of the data.
+Why: keep only what's relevant for analysis — the equivalent of `WHERE` and column selection in SQL.
+:::
+
 ## Why you need it
 
 90% of data work is "keep the rows and columns I need": orders from Russia, over 2000, paid. In pandas that's done with masks and `loc` — the equivalent of `WHERE` and column selection in SQL.
