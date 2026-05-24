@@ -117,7 +117,6 @@ export default defineConfig({
           label: 'SQL',
           autogenerate: { directory: '02-sql' },
           collapsed: true,
-          badge: { text: 'Старт', variant: 'tip' },
         },
         {
           label: 'Excel и Google Sheets',

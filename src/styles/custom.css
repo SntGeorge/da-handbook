@@ -354,3 +354,36 @@ pre.mermaid {
     display: none;
   }
 }
+
+/* === ГЛАВНАЯ: убираем текст заголовка в шапке, оставляем только лого ===
+   На splash-странице (html[data-has-hero]) заголовок рядом с лого избыточен
+   и на мобиле не помещается. Прячем его ВИЗУАЛЬНО, но оставляем для
+   скринридеров (у лого пустой alt — иначе ссылка-домой осталась бы без имени). */
+html[data-has-hero] .site-title span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* === МОБИЛЬНАЯ НАВИГАЦИЯ: подписываем бургер «Меню», чтобы было очевидно,
+   что основная навигация по разделам — там (на десктопе виден сайдбар). === */
+@media (max-width: 50rem) {
+  starlight-menu-button > button {
+    align-items: center;
+  }
+  starlight-menu-button > button::after {
+    content: 'Меню';
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+    margin-inline-start: 0.4rem;
+  }
+  html[lang='en'] starlight-menu-button > button::after {
+    content: 'Menu';
+  }
+}
