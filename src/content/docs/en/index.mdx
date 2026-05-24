@@ -1,0 +1,124 @@
+---
+title: Data Analyst Handbook
+description: A personal Data Analyst handbook — from installing the tools to what recruiters expect. SQL, Python, statistics, BI, product analytics and A/B testing.
+template: splash
+head:
+  - tag: title
+    content: Data Analyst Handbook — a reference for data analysts
+hero:
+  tagline: From your first <code>SELECT</code> to what recruiters expect at a middle level. One handbook, not 47 browser tabs.
+  image:
+    file: ../../../assets/logo.svg
+  actions:
+    - text: Start with SQL
+      link: /en/02-sql/
+      icon: right-arrow
+      variant: primary
+    - text: Learning roadmap
+      link: /en/00-intro/learning-roadmap/
+      icon: open-book
+      variant: secondary
+    - text: GitHub
+      link: https://github.com/SntGeorge/da-handbook
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
+
+## What's inside
+
+Thirteen sections covering everything the CIS, European and US markets expect from a Data Analyst in 2026. Each section is not just theory, but also typical interview tasks, common mistakes and links to external resources for practice.
+
+<CardGrid>
+  <LinkCard
+    title="00 · Introduction"
+    description="Who a DA is, types of analysts, the learning roadmap and market research."
+    href="/en/00-intro/"
+  />
+  <LinkCard
+    title="01 · Setup & Environment"
+    description="Python, PostgreSQL, DBeaver, Git, VS Code — setting up your workspace."
+    href="/en/01-setup/"
+  />
+  <LinkCard
+    title="02 · SQL"
+    description="The analyst's #1 language: from SELECT to window functions and optimization."
+    href="/en/02-sql/"
+  />
+  <LinkCard
+    title="03 · Excel & Google Sheets"
+    description="Formulas, pivot tables, Power Query, Google Sheets specifics."
+    href="/en/03-excel/"
+  />
+  <LinkCard
+    title="04 · Python for Analysis"
+    description="pandas, numpy, matplotlib, seaborn — the analyst's workhorse."
+    href="/en/04-python/"
+  />
+  <LinkCard
+    title="05 · Statistics"
+    description="From descriptive statistics to hypothesis testing and A/B tests."
+    href="/en/05-statistics/"
+  />
+  <LinkCard
+    title="06 · Visualization"
+    description="Visualization principles, choosing the right chart, data storytelling."
+    href="/en/06-visualization/"
+  />
+  <LinkCard
+    title="07 · BI Tools"
+    description="Tableau, Power BI, Looker Studio, Metabase, Superset."
+    href="/en/07-bi-tools/"
+  />
+  <LinkCard
+    title="08 · Product Analytics"
+    description="Metrics, unit economics, cohorts, retention, Amplitude, Mixpanel."
+    href="/en/08-product-analytics/"
+  />
+  <LinkCard
+    title="09 · A/B Testing"
+    description="Design, sample size, analyzing results, common pitfalls."
+    href="/en/09-ab-testing/"
+  />
+  <LinkCard
+    title="10 · ML Basics"
+    description="Regressions, trees, clustering — what an analyst needs to know."
+    href="/en/10-ml-basics/"
+  />
+  <LinkCard
+    title="11 · Modern Stack"
+    description="Snowflake, BigQuery, ClickHouse, dbt, Airflow, DWH modeling."
+    href="/en/11-modern-stack/"
+  />
+  <LinkCard
+    title="12 · Career"
+    description="Resume, portfolio, job search, interviews, offer negotiation."
+    href="/en/12-career/"
+  />
+</CardGrid>
+
+## How to use this
+
+<CardGrid>
+  <Card title="From scratch" icon="rocket">
+    If you're just starting — go in order. First [Introduction](/en/00-intro/) and [Setup](/en/01-setup/), then [SQL](/en/02-sql/) and [Python](/en/04-python/).
+  </Card>
+  <Card title="Refresh a topic" icon="magnifier">
+    Use search (Cmd/Ctrl + K) or the sidebar. Every page is self-contained — read from anywhere.
+  </Card>
+  <Card title="Interview prep" icon="approve-check">
+    Each section has a page with typical tasks. The [Career](/en/12-career/) section covers resumes and interviews end to end.
+  </Card>
+  <Card title="Find sources" icon="external">
+    At the end of each page there are links to external materials to go deeper.
+  </Card>
+</CardGrid>
+
+<Aside type="note" title="This is a working cheat sheet, not a course">
+The site grows together with my own learning. If you see an empty section — I just haven't gotten there yet. Come back in a couple of weeks.
+</Aside>
+
+<Aside type="tip" title="Translation in progress">
+The site is written in Russian first. Pages not yet translated to English will show the Russian version. The English layer is filled in page by page.
+</Aside>

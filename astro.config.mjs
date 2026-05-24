@@ -38,9 +38,16 @@ export default defineConfig({
         'Личный справочник по Data Analyst: SQL, Python, статистика, BI, продуктовая аналитика и A/B-тесты — от установки инструментов до требований рекрутеров.',
       defaultLocale: 'root',
       locales: {
+        // root = русский, отдаётся на корне сайта (/).
         root: {
           label: 'Русский',
           lang: 'ru',
+        },
+        // Английская версия на /en/. Непереведённые страницы автоматически
+        // показывают русский контент (встроенный fallback Starlight).
+        en: {
+          label: 'English',
+          lang: 'en',
         },
       },
       logo: {
@@ -96,11 +103,13 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Введение',
+          translations: { en: 'Introduction' },
           autogenerate: { directory: '00-intro' },
           collapsed: false,
         },
         {
           label: 'Установка и окружение',
+          translations: { en: 'Setup & Environment' },
           autogenerate: { directory: '01-setup' },
           collapsed: true,
         },
@@ -112,26 +121,31 @@ export default defineConfig({
         },
         {
           label: 'Excel и Google Sheets',
+          translations: { en: 'Excel & Google Sheets' },
           autogenerate: { directory: '03-excel' },
           collapsed: true,
         },
         {
           label: 'Python для анализа',
+          translations: { en: 'Python for Analysis' },
           autogenerate: { directory: '04-python' },
           collapsed: true,
         },
         {
           label: 'Статистика',
+          translations: { en: 'Statistics' },
           autogenerate: { directory: '05-statistics' },
           collapsed: true,
         },
         {
           label: 'Визуализация',
+          translations: { en: 'Visualization' },
           autogenerate: { directory: '06-visualization' },
           collapsed: true,
         },
         {
           label: 'BI-инструменты',
+          translations: { en: 'BI Tools' },
           collapsed: true,
           items: [
             { slug: '07-bi-tools' },
@@ -155,26 +169,31 @@ export default defineConfig({
         },
         {
           label: 'Продуктовая аналитика',
+          translations: { en: 'Product Analytics' },
           autogenerate: { directory: '08-product-analytics' },
           collapsed: true,
         },
         {
           label: 'A/B-тестирование',
+          translations: { en: 'A/B Testing' },
           autogenerate: { directory: '09-ab-testing' },
           collapsed: true,
         },
         {
           label: 'ML-база',
+          translations: { en: 'ML Basics' },
           autogenerate: { directory: '10-ml-basics' },
           collapsed: true,
         },
         {
           label: 'Современный стек',
+          translations: { en: 'Modern Stack' },
           autogenerate: { directory: '11-modern-stack' },
           collapsed: true,
         },
         {
           label: 'Карьера',
+          translations: { en: 'Career' },
           autogenerate: { directory: '12-career' },
           collapsed: true,
         },
