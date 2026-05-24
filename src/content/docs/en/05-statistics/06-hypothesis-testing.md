@@ -46,10 +46,10 @@ The most common analyst case — comparing two conversions. Group A: 200 purchas
 ```python
 from statsmodels.stats.proportion import proportions_ztest
 stat, p = proportions_ztest(count=[200, 250], nobs=[5000, 5000])
-print(p)        # ≈ 0.018
+print(p)        # ≈ 0.016
 ```
 
-- $p \approx 0.018 < 0.05$ → we reject $H_0$: the rise from 4% to 5% is **statistically significant**, unlikely to be chance.
+- $p \approx 0.016 < 0.05$ → we reject $H_0$: the rise from 4% to 5% is **statistically significant**, unlikely to be chance.
 
 But before shipping B, check the **[effect size and confidence interval](/en/05-statistics/05-confidence-intervals/)** of the difference: is +1 pp also practically important? Significance says "there's an effect", not "the effect is large".
 

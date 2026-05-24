@@ -53,22 +53,24 @@ WHERE amount > (SELECT AVG(amount) FROM orders);
 | 101      | 2500   |
 | 104      | 4200   |
 
-Скалярный подзапрос можно положить и в `SELECT` — например, посчитать долю заказа в общей выручке:
+Скалярный подзапрос можно положить и в `SELECT` — например, посчитать долю заказа в оплаченной выручке (подзапрос и снаружи, и внутри считает по `paid`, поэтому доли складываются в ~100%):
 
 ```sql
 SELECT order_id,
        amount,
-       ROUND(amount * 100.0 / (SELECT SUM(amount) FROM orders)) AS pct
+       ROUND(amount * 100.0 / (SELECT SUM(amount) FROM orders WHERE status = 'paid')) AS pct
 FROM orders
 WHERE status = 'paid';
 ```
 
+Знаменатель — `SUM(amount)` по оплаченным = 9200.
+
 | order_id | amount | pct |
 |----------|--------|-----|
-| 101      | 2500   | 26  |
-| 102      | 1800   | 19  |
-| 104      | 4200   | 44  |
-| 105      | 700    | 7   |
+| 101      | 2500   | 27  |
+| 102      | 1800   | 20  |
+| 104      | 4200   | 46  |
+| 105      | 700    | 8   |
 
 ## IN с подзапросом
 

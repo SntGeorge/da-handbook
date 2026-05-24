@@ -61,7 +61,7 @@ q = text("SELECT * FROM orders WHERE country = :c AND amount > :a")
 pd.read_sql(q, engine, params={"c": "RU", "a": 2000})
 ```
 
-With string concatenation an attacker can inject `'; DROP TABLE orders; --` and wreck the database. Parameterization escapes the value and makes that impossible. More — in [the section on SQL injection](/en/02-sql/13-data-modification/).
+With string concatenation an attacker can inject `'; DROP TABLE orders; --` and wreck the database. Parameterization escapes the value and makes that impossible.
 
 ## Writing to the database: to_sql
 
@@ -88,4 +88,4 @@ It's an SQL injection vulnerability: malicious input changes the query's logic (
 ## What's next
 
 - [APIs and scraping](/en/04-python/15-apis-and-scraping/) — data from the web, not the database.
-- [Data modification in SQL](/en/02-sql/13-data-modification/) — INSERT/UPDATE and the injection topic.
+- [Data modification in SQL](/en/02-sql/13-data-modification/) — INSERT, UPDATE, DELETE.

@@ -23,7 +23,7 @@ A set of checks and processes ensuring data is **correct, complete and fresh**. 
 |------|----------------|
 | **not_null** | no missing values in a column (e.g. `order_id`) |
 | **unique** | values are unique (no key duplication) |
-| **accepted_values** | a value from an allowed set (`status ∈ {paid, cancelled}`) |
+| **accepted_values** | a value from an allowed set (`status ∈ {paid, cancelled, pending}`) |
 | **relationships** | referential integrity (every `customer_id` exists in the reference) |
 | **custom** | your own business rule (`amount >= 0`, revenue didn't drop 90% in a day) |
 

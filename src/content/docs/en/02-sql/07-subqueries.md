@@ -53,22 +53,24 @@ The average `amount` = (2500+1800+990+4200+700)/5 = 2038. Above it:
 | 101      | 2500   |
 | 104      | 4200   |
 
-A scalar subquery can also go in `SELECT` — e.g. compute each order's share of total revenue:
+A scalar subquery can also go in `SELECT` — e.g. compute each order's share of paid revenue (both the outer query and the subquery filter by `paid`, so the shares add up to ~100%):
 
 ```sql
 SELECT order_id,
        amount,
-       ROUND(amount * 100.0 / (SELECT SUM(amount) FROM orders)) AS pct
+       ROUND(amount * 100.0 / (SELECT SUM(amount) FROM orders WHERE status = 'paid')) AS pct
 FROM orders
 WHERE status = 'paid';
 ```
 
+The denominator is `SUM(amount)` over paid = 9200.
+
 | order_id | amount | pct |
 |----------|--------|-----|
-| 101      | 2500   | 26  |
-| 102      | 1800   | 19  |
-| 104      | 4200   | 44  |
-| 105      | 700    | 7   |
+| 101      | 2500   | 27  |
+| 102      | 1800   | 20  |
+| 104      | 4200   | 46  |
+| 105      | 700    | 8   |
 
 ## IN with a subquery
 

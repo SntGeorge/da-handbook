@@ -61,7 +61,7 @@ q = text("SELECT * FROM orders WHERE country = :c AND amount > :a")
 pd.read_sql(q, engine, params={"c": "RU", "a": 2000})
 ```
 
-При склейке строки злоумышленник может подставить `'; DROP TABLE orders; --` и испортить базу. Параметризация экранирует значение и делает это невозможным. Подробнее — в [разделе про SQL-инъекции](/02-sql/13-data-modification/).
+При склейке строки злоумышленник может подставить `'; DROP TABLE orders; --` и испортить базу. Параметризация экранирует значение и делает это невозможным.
 
 ## Запись в базу: to_sql
 
@@ -88,4 +88,4 @@ df.to_sql("results", engine, if_exists="append", index=False)
 ## Что дальше
 
 - [API и скрейпинг](/04-python/15-apis-and-scraping/) — данные из веба, а не из базы.
-- [Изменение данных в SQL](/02-sql/13-data-modification/) — INSERT/UPDATE и тема инъекций.
+- [Изменение данных в SQL](/02-sql/13-data-modification/) — INSERT, UPDATE, DELETE.

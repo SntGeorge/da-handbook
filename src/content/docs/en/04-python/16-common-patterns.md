@@ -97,7 +97,7 @@ t, p = stats.ttest_ind(a, b)
 print(f"Conversion A={a.mean():.3f}, B={b.mean():.3f}, p-value={p:.4f}")
 ```
 
-If `p-value < 0.05` — the difference is statistically significant. The full methodology (sample size, errors, pitfalls) — in [the A/B section](/en/09-ab-testing/01-fundamentals/).
+If `p-value < 0.05` — the difference is statistically significant. For **conversion proportions** the canonical choice is a two-proportion z-test (`statsmodels.proportions_ztest`) or `chi2_contingency`; `ttest_ind` on 0/1 values also works as an approximation. The full methodology (sample size, errors, pitfalls) — in [the A/B section](/en/09-ab-testing/01-fundamentals/).
 
 :::caution[p-value doesn't replace common sense]
 Statistical significance (`p < 0.05`) only says the difference is unlikely to be random. It doesn't say the effect is **large** or **important to the business**. Always look at the effect size and the confidence interval, not just the p-value.
