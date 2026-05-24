@@ -15,12 +15,14 @@ const props = Astro.props as Props;
 <script>
   type Diagram = { el: HTMLElement; code: string; id: string };
 
-  // Список диаграмм текущей страницы. ВАЖНО: перезаписываем его только когда
-  // реально нашли <pre class="mermaid"> — иначе повторный вызов setup()
-  // (например, от astro:page-load на той же странице) очистил бы список и
-  // первый рендер ушёл бы «в пустоту». Это и был баг с пропадающей схемой.
+  // Список диаграмм текущей страницы. Перезаписываем только когда реально
+  // нашли <pre class="mermaid"> — иначе повторный вызов setup() (например,
+  // от astro:page-load на той же странице) очистил бы список.
   let diagrams: Diagram[] = [];
   let mermaidPromise: Promise<typeof import('mermaid').default> | null = null;
+  // Цепочка промисов: рендеры не накладываются друг на друга и не теряются
+  // (важно, когда смена темы прилетает прямо во время первого рендера).
+  let renderChain: Promise<void> = Promise.resolve();
 
   function loadMermaid() {
     if (!mermaidPromise) {
@@ -30,37 +32,49 @@ const props = Astro.props as Props;
   }
 
   function currentTheme(): 'default' | 'dark' {
-    // data-theme может быть 'light' | 'dark'; при 'auto' Starlight всё равно
-    // проставляет конкретное значение. Нет значения — считаем тёмной.
     return document.documentElement.dataset.theme === 'light' ? 'default' : 'dark';
   }
 
   async function render() {
     if (diagrams.length === 0) return;
     const mermaid = await loadMermaid();
+    // Ждём шрифты: иначе mermaid измеряет текст не тем шрифтом и может выдать
+    // битую/пустую разметку на первом рендере.
+    if (document.fonts?.ready) {
+      try {
+        await document.fonts.ready;
+      } catch {
+        /* не критично */
+      }
+    }
     mermaid.initialize({
       startOnLoad: false,
       theme: currentTheme(),
-      fontFamily: 'inherit',
+      // Конкретный системный шрифт, а не 'inherit' — не зависим от загрузки
+      // веб-шрифтов и от их метрик.
+      fontFamily: 'system-ui, -apple-system, Segoe UI, sans-serif',
       securityLevel: 'strict',
     });
-    await Promise.all(
-      diagrams.map(async (d) => {
-        try {
-          const { svg } = await mermaid.render(d.id, d.code);
-          d.el.innerHTML = svg;
-        } catch (err) {
-          console.error('Mermaid render error:', err);
-          d.el.textContent = d.code;
-        }
-      })
-    );
+    for (const d of diagrams) {
+      try {
+        const { svg } = await mermaid.render(d.id, d.code);
+        d.el.innerHTML = svg;
+      } catch (err) {
+        console.error('Mermaid render error:', err);
+        d.el.textContent = d.code;
+      }
+    }
+  }
+
+  // Сериализуем рендеры через цепочку промисов.
+  function scheduleRender() {
+    renderChain = renderChain.then(render).catch((e) => console.error(e));
   }
 
   // Заменяем каждый <pre class="mermaid"> на контейнер, запоминая исходник.
   function setup() {
     const blocks = document.querySelectorAll<HTMLElement>('pre.mermaid');
-    if (blocks.length === 0) return; // ничего нового — список не трогаем
+    if (blocks.length === 0) return; // нечего рендерить — список не трогаем
     diagrams = [];
     blocks.forEach((pre, i) => {
       const code = pre.textContent ?? '';
@@ -69,7 +83,7 @@ const props = Astro.props as Props;
       pre.replaceWith(container);
       diagrams.push({ el: container, code, id: `mermaid-${Date.now()}-${i}` });
     });
-    render();
+    scheduleRender();
   }
 
   // Первичная инициализация (модульный скрипт выполняется после парсинга DOM).
@@ -82,8 +96,15 @@ const props = Astro.props as Props;
   // Навигация при включённых view-transitions.
   document.addEventListener('astro:page-load', setup);
 
-  // Перерисовка при переключении светлой/тёмной темы (без повторного collect).
+  // Подстраховка: если к полной загрузке svg так и не появился — дорисуем.
+  window.addEventListener('load', () => {
+    if (diagrams.length && !document.querySelector('.mermaid-diagram svg')) {
+      scheduleRender();
+    }
+  });
+
+  // Перерисовка при переключении светлой/тёмной темы.
   new MutationObserver((mutations) => {
-    if (mutations.some((m) => m.attributeName === 'data-theme')) render();
+    if (mutations.some((m) => m.attributeName === 'data-theme')) scheduleRender();
   }).observe(document.documentElement, { attributes: true });
 </script>
