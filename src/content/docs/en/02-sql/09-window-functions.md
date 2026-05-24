@@ -17,6 +17,13 @@ FROM orders;
 `PARTITION BY` — which groups to split into, `ORDER BY` inside `OVER` — the order (for ranks and running totals). This is the most common topic in middle-level interviews.
 :::
 
+:::note[Data flow]
+Input: table rows
+→ Processing: the function is computed **over a window** (`PARTITION BY` + `ORDER BY`), but rows are NOT collapsed
+→ Output: the same rows + a new column (rank, running total, share, a neighbor's value).
+Why: add an aggregate/rank next to each row — something `GROUP BY` can't do.
+:::
+
 ## Why you need it
 
 `GROUP BY` answers "how much in total per customer" but loses the individual orders. Window functions give you **both**: you see each order AND its share/rank/sum per customer. Hence — running totals, "top-N per category", "difference from the previous month".

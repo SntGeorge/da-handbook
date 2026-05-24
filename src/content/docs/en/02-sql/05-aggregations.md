@@ -13,6 +13,13 @@ Aggregate functions collapse many rows into one number: `COUNT`, `SUM`, `AVG`, `
 - In `SELECT` without `GROUP BY` you can output only aggregates; with `GROUP BY` — only the `GROUP BY` columns plus aggregates.
 :::
 
+:::note[Data flow]
+Input: many rows (orders)
+→ Processing: `GROUP BY` splits into groups → an aggregate (`SUM`/`COUNT`/`AVG`) collapses each → `HAVING` filters groups
+→ Output: a "metric by group" table.
+Why: turn raw rows into summary numbers (revenue by country, average check).
+:::
+
 ## Why you need it
 
 Analytics is almost always aggregates: "how many orders", "average order value", "revenue by country". `GROUP BY` turns a table of rows into a table of metrics.

@@ -17,6 +17,13 @@ A `JOIN` combines rows from two tables by a condition (usually a key).
 90% of an analyst's queries are `INNER` and `LEFT JOIN`. The main trap is **duplicate rows** after a one-to-many join.
 :::
 
+:::note[Data flow]
+Input: two tables with a common key (orders + customers)
+→ Processing: `JOIN ... ON` matches rows by the key; the type (`INNER`/`LEFT`/...) decides the fate of non-matches
+→ Output: one combined table.
+Why: gather data from different tables into one result (an order + the customer's name).
+:::
+
 ## Why you need it
 
 In a normalized database, data is split across tables: customers in one, orders in another. To answer "how much did each customer spend", you have to **combine** the data. That's what a `JOIN` does.

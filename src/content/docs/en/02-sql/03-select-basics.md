@@ -19,6 +19,13 @@ LIMIT 10;
 Remember: you write `SELECT` first, but it runs almost last.
 :::
 
+:::note[Data flow]
+Input: a table in the DB
+→ Processing: `FROM` takes the table → `WHERE` drops rows → `SELECT` picks columns → `ORDER BY`/`LIMIT` sort and limit
+→ Output: a result table.
+Why: get exactly the rows and columns you need from the database — the basis of any query.
+:::
+
 ## Why you need it
 
 `SELECT` means "read the data". 95% of an analyst's work is exactly that: pull, filter, sort. Everything else (`JOIN`, aggregates, window functions) builds on top of this skeleton.

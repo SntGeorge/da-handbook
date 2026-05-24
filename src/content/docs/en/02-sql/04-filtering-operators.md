@@ -16,6 +16,13 @@ On top of `=`/`>`/`<` there are handy filtering operators:
 Main trap: `= NULL` **doesn't work**, and `NOT IN` with a `NULL` silently returns nothing. Details below.
 :::
 
+:::note[Data flow]
+Input: all rows of the table
+→ Processing: the `WHERE` condition (`BETWEEN`/`IN`/`LIKE`/`IS NULL`) is checked for each row
+→ Output: only the rows where the condition is true.
+Why: precisely select the needed subset — a range, a list, a pattern, missing values.
+:::
+
 ## Why you need it
 
 These operators make `WHERE` shorter and more readable. Instead of `amount >= 1000 AND amount <= 5000` you write `amount BETWEEN 1000 AND 5000`. But `NULL` has its own logic — and that's exactly where data gets lost.
