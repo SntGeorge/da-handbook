@@ -9,6 +9,13 @@ sidebar:
 Power Query is Excel's built-in ETL tool: it loads data from files/databases/the web, cleans and transforms it **by recorded steps**, and then refreshes the result with one button. Unlike formulas, the steps repeat automatically on a new export.
 :::
 
+:::note[Data flow]
+Input: a source (CSV/Excel/folder/DB/web)
+→ Processing: recorded steps (types, filters, merge/append) are applied in order
+→ Output: a clean table + a "Refresh" button to repeat it on new data.
+Why: set up the cleaning once and repeat it automatically — a mini-ETL inside Excel.
+:::
+
 ## Why you need it
 
 If a new CSV arrives every month that needs the same cleaning, doing it with formulas is hell. Power Query remembers the transformation chain once; next time you just drop in the new file and click **Refresh**. That's the difference between "doing it by hand every time" and "setting it up once".

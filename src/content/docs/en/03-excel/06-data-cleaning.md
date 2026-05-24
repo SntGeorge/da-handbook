@@ -9,6 +9,13 @@ sidebar:
 Real data is dirty: extra spaces, duplicates, "23 units" instead of a number, a full name in one cell. The basic cleaning kit is **`TRIM`** (strip spaces), **Remove Duplicates**, **Text-to-Columns / Flash Fill** (split columns) and the text functions `LEFT`/`MID`/`FIND`.
 :::
 
+:::note[Data flow]
+Input: dirty data (extra spaces, duplicates, "text instead of a number")
+→ Processing: `TRIM`/`CLEAN`, removing duplicates, Text-to-Columns/Flash Fill, text functions
+→ Output: a tidy table fit for formulas and pivots.
+Why: remove the garbage before analysis — otherwise `VLOOKUP` misses and sums lie.
+:::
+
 ## Why you need it
 
 Dirty data breaks everything downstream: `VLOOKUP` won't find "Anna " (with a space) ≠ "Anna", a sum won't compute because of text among numbers. Cleaning is the mandatory first step of any analysis.

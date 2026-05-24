@@ -9,6 +9,13 @@ sidebar:
 Google Sheets does almost everything Excel does, but has a few unique functions. The main one is **`QUERY`**: SQL-like queries right in the spreadsheet. Plus **`IMPORTRANGE`** (data from another sheet), **`ARRAYFORMULA`** (a formula across a whole column at once) and real real-time collaboration.
 :::
 
+:::note[Data flow]
+Input: a range in Google Sheets (or data from another spreadsheet)
+→ Processing: `QUERY` (SQL-like), `IMPORTRANGE` (pull in), `ARRAYFORMULA` (across a whole column)
+→ Output: the computed/assembled result right in the sheet.
+Why: use SQL-like power and spreadsheet linking where you work in Sheets.
+:::
+
 ## Why you need it
 
 Many companies live in Google Sheets rather than Excel — because it's free and shareable. The basic formulas (`SUMIFS`, `VLOOKUP`, `XLOOKUP`) work the same, but there are unique tricks that speed up work a lot and that interviewers like to ask about.

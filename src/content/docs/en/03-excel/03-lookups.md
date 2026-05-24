@@ -9,6 +9,13 @@ sidebar:
 A lookup means "pull a value from another table by key" (the equivalent of a SQL `JOIN`). The modern choice is **`XLOOKUP`**: simpler and free of the old `VLOOKUP` limitations. If `XLOOKUP` isn't available (old Excel) — use the **`INDEX` + `MATCH`** combo.
 :::
 
+:::note[Data flow]
+Input: two tables with a common key (orders + a reference)
+→ Processing: `XLOOKUP`/`VLOOKUP`/`INDEX+MATCH` look up a value by key in the second table
+→ Output: the pulled value next to the original row.
+Why: join data from different tables by key — it's a `JOIN`, just in spreadsheets.
+:::
+
 ## Why you need it
 
 You have an orders table with `customer_id` and a separate customer reference. A lookup substitutes the customer name into each order by `id`. Without it you'd search by hand — impossible across thousands of rows.

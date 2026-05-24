@@ -9,6 +9,13 @@ sidebar:
 A pivot table is `GROUP BY` with the mouse: you drag fields into areas, and Excel computes sums, counts and averages by group itself. The main tool for fast analysis without a single formula.
 :::
 
+:::note[Data flow]
+Input: a flat table of rows
+→ Processing: you drag fields into areas (rows/columns/values) — Excel groups and aggregates
+→ Output: a pivot table of "a metric by breakdowns".
+Why: get a summary with the mouse, no formulas — it's `GROUP BY` for Excel.
+:::
+
 ## Why you need it
 
 When you need "revenue by country and month" in a minute, writing `SUMIFS` for each cell is slow. A pivot builds such a table by dragging fields and re-assembles on the fly.

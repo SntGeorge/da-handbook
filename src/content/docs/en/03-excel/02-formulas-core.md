@@ -9,6 +9,13 @@ sidebar:
 The analyst's workhorses in Excel are **`SUMIFS` / `COUNTIFS` / `AVERAGEIFS`**: compute a sum/count/average by conditions (the equivalent of SQL's `GROUP BY ... WHERE`). Plus `IF` for logic and `ROUND` for tidy numbers. This set covers most tasks.
 :::
 
+:::note[Data flow]
+Input: a range of data (orders)
+→ Processing: `SUMIFS`/`COUNTIFS`/`AVERAGEIFS` pick rows by conditions and compute an aggregate; `IF`/`IFS` branch the logic
+→ Output: a result number in a cell.
+Why: compute a sum/count/average by conditions without manual filtering (the equivalent of `GROUP BY ... WHERE`).
+:::
+
 ## Why you need it
 
 "How much did we sell in March in the Electronics category?" — that's `SUMIFS`. "How many orders from Russia?" — `COUNTIFS`. These functions replace manual filtering and reduce to one formula what would otherwise be done with the mouse.
