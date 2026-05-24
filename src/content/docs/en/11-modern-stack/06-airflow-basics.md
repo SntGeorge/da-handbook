@@ -9,6 +9,13 @@ sidebar:
 Airflow is a pipeline orchestrator: you describe a **DAG** (a graph of tasks with dependencies) in Python, and Airflow runs the tasks **on a schedule** in the right order, tracks status and reruns failures. An analyst usually doesn't need to write DAGs from scratch — they need to understand how to read a pipeline, where to find logs and what backfill is.
 :::
 
+:::note[Data flow]
+Input: a schedule or an external trigger
+→ Processing: the DAG runs tasks in the right order (extract → dbt → refresh), tracks status, reruns failures
+→ Output: refreshed marts and dashboards on schedule.
+Why: automation and control of the pipeline — data updates itself, and you can see where things broke.
+:::
+
 ## Why you need it
 
 A report must update itself: at night fetch data → transform ([dbt](/en/11-modern-stack/05-dbt-basics/)) → refresh the dashboard. Airflow ties these steps into a managed process. Seeing why "yesterday's data didn't update" and reading the task graph is a working skill in teams with a DWH.

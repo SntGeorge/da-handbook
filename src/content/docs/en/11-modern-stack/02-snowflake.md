@@ -9,6 +9,13 @@ sidebar:
 Snowflake's main idea is **separating storage and compute**: data sits separately, and independent **virtual warehouses** process it, scaling and billed separately. This gives flexibility (several teams don't interfere) and cost control. Plus unique features — **Time Travel** and **Zero-Copy Cloning**.
 :::
 
+:::note[Data flow]
+Input: data from sources (loaded via `COPY`/Snowpipe/connectors)
+→ Processing: a virtual warehouse runs SQL and transformations, storage holds the data separately
+→ Output: tables and marts for BI and analytics.
+Why: scalable cloud storage where you pay only for the compute you use.
+:::
+
 ## Why you need it
 
 Snowflake is one of the most widespread cloud DWHs, especially in the US and Europe. An analyst should understand the cost model (what "credits" are charged for) and a couple of signature features — interviewers like to ask about them.

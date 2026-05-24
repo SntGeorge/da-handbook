@@ -9,6 +9,13 @@ sidebar:
 dbt turns DWH transformations into **code, like developers'**: a model is a `SELECT` in a `.sql` file, and dbt builds tables/views from them, resolves dependencies, tests and documents. It's the **T (Transform)** layer in ELT: raw data is already in the warehouse, dbt makes clean marts from it. One of the main analytics-engineer skills.
 :::
 
+:::note[Data flow]
+Input: raw tables in the DWH (declared as `sources`)
+→ Processing: SQL models in layers (staging → marts), linked via `ref()`, run by `dbt build` with tests
+→ Output: clean marts + documentation and a dependency graph (lineage).
+Why: transformations as version-controlled, tested, reproducible code.
+:::
+
 ## Why you need it
 
 Transformations used to live in scattered SQL scripts and views without versions, tests or run order — chaos. dbt brings engineering practices to analytics: git, tests, documentation, dependencies. It appears more and more in middle+ postings.

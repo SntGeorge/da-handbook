@@ -9,6 +9,13 @@ sidebar:
 BigQuery is Google's **serverless** DWH: you don't manage servers at all, you just write SQL. The main pricing model is **on-demand: you pay for the volume of data a query reads**. So the key skill is **partitioning and clustering**, to make a query scan less and cost less.
 :::
 
+:::note[Data flow]
+Input: data is loaded into BigQuery (load jobs, streaming, external tables from GCS)
+→ Processing: the serverless engine scans the needed partitions/clusters for the SQL query
+→ Output: results for dashboards, exports and ML.
+Why: analytics with no server administration; you pay for the volume of data scanned.
+:::
+
 ## Why you need it
 
 BigQuery is popular at product companies and natively tied to Google's ecosystem (GA4, [Looker Studio](/en/07-bi-tools/looker/01-intro/)). An inefficient query here hits the wallet directly — understanding the pricing model saves real money.
