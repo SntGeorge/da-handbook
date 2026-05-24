@@ -1,17 +1,89 @@
 ---
 title: DAX — основы
-description: Calculated columns vs measures, базовые функции DAX.
+description: "Основы DAX в Power BI: calculated columns vs measures, row context и filter context, базовые функции SUM/COUNT, DIVIDE, IF/SWITCH."
 sidebar:
   order: 4
 ---
 
-:::note[В разработке]
+:::tip[Коротко]
+DAX — язык формул Power BI. Ключевое различие: **measure** (мера) считается на лету в контексте визуала, **calculated column** — один раз при загрузке, по строкам. В 90% случаев нужна мера. Понимание **контекста** (row vs filter) — главное, что отличает того, кто «понимает DAX», от того, кто копирует формулы.
 :::
 
-## План
+## Зачем это нужно
 
-- Calculated columns vs measures
-- Контекст: row context vs filter context
-- Базовые: SUM, AVERAGE, COUNT, COUNTROWS
-- DIVIDE (защита от деления на 0)
-- IF, SWITCH
+DAX превращает модель в метрики: выручка, средний чек, % выполнения плана. Без него Power BI просто показывает сырые поля. DAX — то, что реально спрашивают на собеседовании по Power BI.
+
+## Calculated columns vs measures
+
+| | Calculated column | Measure |
+|--|-------------------|---------|
+| Когда считается | при загрузке/refresh, построчно | на лету, в контексте визуала |
+| Где живёт | как новый столбец в таблице | как метрика, без места в таблице |
+| Память | занимает (хранится) | не хранит данные |
+| Когда брать | нужен атрибут строки (категория) | агрегаты, почти всегда |
+
+:::tip[Сомневаешься — делай measure]
+Меры эффективнее (не раздувают модель) и пересчитываются под каждый срез. Calculated column нужен редко — когда значение должно быть атрибутом строки (например, категория суммы для группировки). Для метрик (sum, avg, доли) — всегда measure.
+:::
+
+## Контекст: row vs filter
+
+Сердце DAX. Без этого формулы кажутся магией:
+
+- **Row context** (контекст строки) — «текущая строка». Есть в calculated column и в итераторах (`SUMX`). Формула видит значения полей этой строки.
+- **Filter context** (контекст фильтра) — какие фильтры наложены визуалом/срезом/строкой матрицы. Мера `SUM(Sales[Amount])` в строке «Россия» автоматически считается только по России — это и есть filter context.
+
+Меры реагируют на filter context: одна формула даёт разные числа в разных ячейках отчёта.
+
+## Базовые функции
+
+```dax
+Total Sales = SUM(Sales[Amount])
+Orders      = COUNTROWS(Sales)
+Customers   = DISTINCTCOUNT(Sales[CustomerID])
+Avg Check   = AVERAGE(Sales[Amount])
+```
+
+## DIVIDE — защита от деления на ноль
+
+```dax
+Conversion = DIVIDE([Purchases], [Visits])     -- вернёт BLANK при делении на 0
+```
+
+:::caution[Используй DIVIDE, а не /]
+Обычное деление `[Purchases] / [Visits]` упадёт в ошибку при нулевом знаменателе и сломает визуал. `DIVIDE` безопасно вернёт BLANK (или заданное значение). Для любых долей и коэффициентов бери `DIVIDE`.
+:::
+
+## IF и SWITCH
+
+```dax
+Tier = IF([Total Sales] > 3000, "A", "B")
+
+Tier = SWITCH(TRUE(),
+    [Total Sales] >= 3000, "A",
+    [Total Sales] >= 2000, "B",
+    "C")
+```
+
+`SWITCH(TRUE(), ...)` — читаемая замена вложенным `IF` при нескольких условиях.
+
+## Задачи для самопроверки
+
+<details>
+<summary>1. Нужна метрика «выручка», которая пересчитывается под любой срез отчёта. Column или measure?</summary>
+
+Measure: `Total Sales = SUM(Sales[Amount])`. Мера считается на лету в filter context — в строке «Россия» покажет выручку России, в итоге — общую. Calculated column так не умеет: он вычисляется построчно при загрузке и не реагирует на срезы визуала.
+
+</details>
+
+<details>
+<summary>2. Почему для конверсии лучше DIVIDE, а не обычное деление?</summary>
+
+`DIVIDE([Purchases], [Visits])` безопасно обрабатывает нулевой знаменатель (вернёт BLANK), а `/` выдаст ошибку и сломает визуал. На реальных данных нули в знаменателе неизбежны (сегмент без визитов), поэтому DIVIDE — стандарт для долей.
+
+</details>
+
+## Что дальше
+
+- [DAX — продвинутый](/07-bi-tools/power-bi/05-dax-advanced/) — CALCULATE, time intelligence, итераторы.
+- [Модель данных](/07-bi-tools/power-bi/03-data-model/) — filter context работает по связям модели.
