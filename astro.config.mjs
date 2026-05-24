@@ -198,6 +198,11 @@ export default defineConfig({
           autogenerate: { directory: '12-career' },
           collapsed: true,
         },
+        {
+          label: 'Глоссарий метрик',
+          translations: { en: 'Metrics glossary' },
+          slug: '13-glossary',
+        },
       ],
       components: {
         // Переопределяем Head, чтобы добавить клиентский рендер Mermaid-диаграмм.
