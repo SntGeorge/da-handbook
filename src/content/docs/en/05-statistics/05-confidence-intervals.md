@@ -28,6 +28,12 @@ $$\bar{x} \pm z \cdot \frac{\sigma}{\sqrt{n}}$$
 
 where $z = 1.96$ for 95%. The width depends on the spread $\sigma$ and the sample size $n$ (via the [standard error](/en/05-statistics/04-clt-and-sampling/)).
 
+**With numbers.** Take the example [from the SE page](/en/05-statistics/04-clt-and-sampling/): $\bar{x}=300$ sec, $\sigma=120$, $n=400$, so $SE=6$.
+
+$$300 \pm 1.96 \cdot 6 = 300 \pm 11.76 = [288.2;\ 311.8] \text{ sec}$$
+
+Read as: "the true mean time on site across all users is most likely between 288 and 312 seconds". Where `1.96` comes from: it's the $z$-value cutting off the central 95% of the normal distribution (for 90% you use 1.64, for 99% — 2.58).
+
 ```python
 from scipy import stats
 import numpy as np
@@ -45,7 +51,11 @@ For conversions and proportions:
 
 $$\hat{p} \pm z \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
 
-Example: 50 purchases out of 1000 → $\hat{p}=0.05$, 95% CI ≈ [3.6%, 6.4%]. The larger $n$, the narrower the interval.
+**With numbers.** 50 purchases out of 1000 → $\hat{p}=0.05$.
+
+$$0.05 \pm 1.96 \sqrt{\frac{0.05 \cdot 0.95}{1000}} = 0.05 \pm 1.96 \cdot 0.0069 = 0.05 \pm 0.0135 = [3.6\%;\ 6.4\%]$$
+
+Practical takeaway: a "5%" conversion is really "somewhere between 3.6% and 6.4%". So comparing two conversions "by eye" (5.0% vs 5.2%) is meaningless if their intervals overlap — that's what an [A/B test](/en/09-ab-testing/01-fundamentals/) is for. The larger $n$, the narrower the interval: on 100,000 impressions the same $\hat{p}=0.05$ gives a CI ≈ [4.9%, 5.1%].
 
 ## Bootstrap
 

@@ -29,6 +29,12 @@ $$SE = \frac{\sigma}{\sqrt{n}}$$
 
 The key takeaway: precision grows as $\sqrt{n}$, not linearly. **To double the precision, you need 4× more data.** Hence the law of diminishing returns in sample size.
 
+**With numbers.** We measured time on site for 400 users: mean $\bar{x} = 300$ sec, standard deviation $\sigma = 120$ sec.
+
+$$SE = \frac{120}{\sqrt{400}} = \frac{120}{20} = 6 \text{ sec}$$
+
+So the sample mean (300 sec) "wanders" around the true value by about ±6 sec. From this a [confidence interval](/en/05-statistics/05-confidence-intervals/) follows directly: a 95% CI ≈ $300 \pm 1.96 \cdot 6 = [288, 312]$ sec. Want to halve the SE (to 3 sec) — you'd need not 800 but **1600** users.
+
 ## Sampling types
 
 | Type | How it's formed | Risk |

@@ -59,7 +59,12 @@ model.params        # the β coefficients
 model.summary()     # full report with p-values and R²
 ```
 
-For example, $\beta_1 = 3$ for `ad_spend` → each dollar of advertising is associated on average with +3 dollars of revenue (within the model and data).
+For example, the model returned $\beta_0 = 1000$, $\beta_1 = 3$ for `ad_spend`. Read and **used** like this:
+
+- **Interpretation**: each dollar of advertising is associated on average with +$3 of revenue (within the model and data).
+- **Prediction**: plug $x$ into the formula. At a spend of $50,000: $y = 1000 + 3 \cdot 50000 = 151{,}000$ in expected revenue.
+
+So regression isn't only "there's a relationship", but a ready formula for prediction: plug in the input — get an estimate of the output.
 
 ## R-squared
 

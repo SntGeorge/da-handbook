@@ -36,6 +36,20 @@ How "scattered" the values are around the center:
 - **Range** (max − min) — crude and sensitive to outliers.
 - **IQR** (interquartile range) = $Q_3 - Q_1$ — the spread of the "middle" 50% of data, robust to outliers.
 
+**With numbers.** Checks `[100, 120, 140, 160, 580]` (the last is an outlier).
+
+1. Mean: $\bar{x} = \frac{100+120+140+160+580}{5} = 220$.
+2. Deviations from the mean and their squares: $(-120)^2, (-100)^2, (-80)^2, (-60)^2, (360)^2 = 14400, 10000, 6400, 3600, 129600$.
+3. Variance: $\sigma^2 = \frac{14400+10000+6400+3600+129600}{5} = 32800$.
+4. Standard deviation: $\sigma = \sqrt{32800} \approx 181$.
+5. IQR: $Q_1 = 120$, $Q_3 = 160$ → $\text{IQR} = 160 - 120 = 40$.
+
+Notice: one outlier (580) inflated $\sigma$ to 181, while the robust IQR stayed at 40 — it barely noticed the outlier. So on "dirty" business data IQR describes the spread more honestly.
+
+:::note[Divide by n or by n−1?]
+Above is the formula for the **whole population** (divide by $n$). For a **sample** (and in practice it's almost always a sample) you use the unbiased estimate — divide by $n-1$ (Bessel's correction). pandas does this by default: `df["x"].std()` uses $n-1$, while `numpy.std()` uses $n$. On large data the difference is negligible, but worth knowing.
+:::
+
 ## Quantiles and percentiles
 
 A quantile splits ordered data at a given proportion. Percentiles are quantiles in percent:

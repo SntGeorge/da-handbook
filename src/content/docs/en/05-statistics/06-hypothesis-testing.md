@@ -36,6 +36,23 @@ The p-value is the probability of seeing **such or more extreme** data **if $H_0
 ✅ It's only: "how surprising the data is under the assumption of no effect". $p = 0.04$ means "with no effect, such data would occur in 4% of cases", nothing more.
 :::
 
+## How it's applied: A/B with numbers
+
+The most common analyst case — comparing two conversions. Group A: 200 purchases out of 5000 (4.0%). Group B: 250 out of 5000 (5.0%). Real difference or noise?
+
+- **$H_0$**: the conversions are equal (difference = 0). **$H_1$**: they differ.
+- We run a **two-proportion z-test** — doing it by hand is cumbersome, so in practice it's one line:
+
+```python
+from statsmodels.stats.proportion import proportions_ztest
+stat, p = proportions_ztest(count=[200, 250], nobs=[5000, 5000])
+print(p)        # ≈ 0.018
+```
+
+- $p \approx 0.018 < 0.05$ → we reject $H_0$: the rise from 4% to 5% is **statistically significant**, unlikely to be chance.
+
+But before shipping B, check the **[effect size and confidence interval](/en/05-statistics/05-confidence-intervals/)** of the difference: is +1 pp also practically important? Significance says "there's an effect", not "the effect is large".
+
 ## Type I and II errors
 
 | | $H_0$ true | $H_0$ false |
